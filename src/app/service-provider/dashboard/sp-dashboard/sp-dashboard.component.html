@@ -1,0 +1,123 @@
+<section>
+    <div class="page-header">
+        <div>
+            <h2 class="main-content-title tx-24 mb-1">Welcome to  Pet Folio Dashboard</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
+        </div>
+  
+        <div class="d-flex">
+            <div class="justify-content-center">
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <p-calendar  [showIcon]="true" inputId="icon" placeholder="Start Date"></p-calendar>
+                    </div>
+                    <div class="col-md-6">
+                        <p-calendar  [showIcon]="true" inputId="icon" placeholder="End Date"></p-calendar>
+                    </div>
+                </div>
+  
+            </div>
+        </div>
+  
+    </div>
+  
+  
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="title-h3">Counts</h3>
+        </div>
+    </div>
+    <div class="row row-sm">
+  
+        <div class="col-lg-3">
+          <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="card-item-icon card-icon">
+                            <img src="assets/images/004.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="card-item-title mb-2">
+                            <label class="main-content-label text-uppercase font-weight-bold mb-1">Customers</label>
+                            <span class="d-block tx-12 mb-0 text-muted">Customer Registration</span>
+                        </div>
+                        <div class="card-item-body">
+                            <div class="card-item-stat">
+                                <h4 class="font-weight-bold">{{counts.doctordetails_count}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <div class="col-lg-3">
+            <div class="card custom-card">
+                  <div class="card-body">
+                      <div class="card-item">
+                          <div class="card-item-icon card-icon bg-success">
+                              <img src="assets/images/001.png" alt="" class="img-fluid">
+                          </div>
+                          <div class="card-item-title mb-2">
+                              <label class="main-content-label text-uppercase font-weight-bold mb-1">Vendors</label>
+                              <span class="d-block tx-12 mb-0 text-muted">Vendor Registration</span>
+                          </div>
+                          <div class="card-item-body">
+                              <div class="card-item-stat">
+                                  <h4 class="font-weight-bold">{{counts.vendor_count}}</h4>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="col-lg-3">
+            <div class="card custom-card">
+                  <div class="card-body">
+                      <div class="card-item">
+                          <div class="card-item-icon card-icon bg-info">
+                              <img src="assets/images/003.png" alt="" class="img-fluid">
+                          </div>
+                          <div class="card-item-title mb-2">
+                              <label class="main-content-label text-uppercase font-weight-bold mb-1">Services</label>
+                              <span class="d-block tx-12 mb-0 text-muted">Service Providers</span>
+                          </div>
+                          <div class="card-item-body">
+                              <div class="card-item-stat">
+                                  <h4 class="font-weight-bold">{{counts.sp_count}}</h4>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="col-lg-3">
+            <div class="card custom-card">
+                  <div class="card-body">
+                      <div class="card-item">
+                          <div class="card-item-icon card-icon bg-danger">
+                              <img src="assets/images/002.png" alt="" class="img-fluid">
+                          </div>
+                          <div class="card-item-title mb-2">
+                              <label class="main-content-label text-uppercase font-weight-bold mb-1">Doctors</label>
+                              <span class="d-block tx-12 mb-0 text-muted">Total Doctors</span>
+                          </div>
+                          <div class="card-item-body">
+                              <div class="card-item-stat">
+                                  <h4 class="font-weight-bold">{{counts.petloverdetails_count}}</h4>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  
+    </div>
+  
+  </section>
+  
+  

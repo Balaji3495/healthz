@@ -1,0 +1,123 @@
+<mat-drawer-container class="example-container" [ngClass]="{'menuslider' : menu_slider}">
+    <mat-drawer class="side" mode="side" opened>
+        <mat-nav-list>
+            <mat-list-item (click)="menuslide()">
+                <mat-icon class="menuBar"> notes</mat-icon>
+            </mat-list-item>
+            <mat-list-item routerLink="dashboard" routerLinkActive="active">
+                <mat-icon mat-list-icon><i class="fab fa-slideshare" aria-hidden="true"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Dashboard</h5>
+                </div>
+            </mat-list-item>
+
+            <mat-list-item routerLinkActive="active" (click)="expand1 = !expand1">
+                <mat-icon mat-list-icon>
+                    <i class="fab fa-android" aria-hidden="true"></i>
+                </mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">App Features</h5>
+                </div>
+                <div class="sb-sidenav-collapse-arrow">
+                    <i *ngIf="!expand1" class="fas fa-chevron-down" aria-hidden="true"></i>
+                    <i *ngIf="expand1" class="fas fa-chevron-up" aria-hidden="true"></i>
+                </div>
+            </mat-list-item>
+            <mat-nav-list style="background: #4d9d67;padding-left: 5px;" *ngIf="expand1">
+                <div class="sub-menu">
+
+                    <mat-list-item routerLinkActive="active" (click)="expand2 = !expand2">
+                        <mat-icon mat-list-icon><i class="fas fa-user-alt" aria-hidden="true"></i></mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Master</h5>
+                        </div>
+                        <div class="sb-sidenav-collapse-arrow">
+                            <i *ngIf="!expand2" class="fas fa-chevron-down" aria-hidden="true"></i>
+                            <i *ngIf="expand2" class="fas fa-chevron-up" aria-hidden="true"></i>
+                        </div>
+                    </mat-list-item>
+                    <mat-nav-list style="background: #4d9d67;" *ngIf="expand2">
+
+                        <div class="sub-menu">
+                            <mat-list-item style="padding-left: 5px;" routerLink="service_provider_type_management"
+                                routerLinkActive="active">
+                                <mat-icon mat-list-icon><i class="fas fa-concierge-bell" aria-hidden="true"></i>
+                                </mat-icon>
+                                <div fxFlex="10"></div>
+                                <div class="sidenav-item">
+                                    <h5 class="lead">Service Type management</h5>
+                                </div>
+                            </mat-list-item>
+                            <mat-list-item style="padding-left: 5px;" routerLink="service_provider_specialization_management"
+                                routerLinkActive="active">
+                                <mat-icon mat-list-icon><i class="fas fa-user-tag" aria-hidden="true"></i>
+                                </mat-icon>
+                                <div fxFlex="10"></div>
+                                <div class="sidenav-item">
+                                    <h5 class="lead">Service Provider Specialization</h5>
+                                </div>
+                            </mat-list-item>
+                        </div>
+                    </mat-nav-list>
+                </div>
+            </mat-nav-list>
+
+
+            <mat-list-item routerLinkActive="active" (click)="expand11 = !expand11">
+                <mat-icon mat-list-icon><i class="fas fa-briefcase" aria-hidden="true"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Service Provider</h5>
+                </div>
+                <div class="sb-sidenav-collapse-arrow">
+                    <i *ngIf="!expand11" class="fas fa-chevron-down" aria-hidden="true"></i>
+                    <i *ngIf="expand11" class="fas fa-chevron-up" aria-hidden="true"></i>
+                </div>
+            </mat-list-item>
+            <mat-nav-list style="background: #4d9d67;" *ngIf="expand11">
+                <div class="sub-menu">
+                    <mat-list-item style="padding-left: 5px;" routerLink="service_provider_detail"
+                        routerLinkActive="active">
+                        <mat-icon mat-list-icon><i class="fas fa-concierge-bell" aria-hidden="true"></i>
+                        </mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Service Provider Details</h5>
+                        </div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="service_provider_appointment" routerLinkActive="active">
+                        <mat-icon mat-list-icon><i class="fas fa-cat" aria-hidden="true"></i>
+                        </mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Pet Services Appointments</h5>
+                        </div>
+                    </mat-list-item>
+                </div>
+            </mat-nav-list>
+
+
+            <!-- <mat-list-item routerLink="notification" routerLinkActive="active">
+                <mat-icon mat-list-icon><i class="fas fa-bell" aria-hidden="true"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Notification</h5>
+                </div>
+            </mat-list-item> -->
+
+
+
+
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <section class="container-fluid">
+            <router-outlet></router-outlet>
+        </section>
+
+    </mat-drawer-content>
+</mat-drawer-container>

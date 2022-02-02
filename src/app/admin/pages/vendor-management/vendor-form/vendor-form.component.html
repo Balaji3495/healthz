@@ -1,0 +1,87 @@
+<h4 class="title">Vendor Create</h4>
+
+<div class="card-box">
+    <form [formGroup]="userForm">
+        <div class="form-row">
+            <div class="form-group col-3">
+                <label for="">First Name</label>
+                <input type="text" class="form-control" formControlName="first_name">
+            </div>
+            <div class="form-group col-3">
+                <label for="">Last Name</label>
+                <input type="text" class="form-control" formControlName="last_name">
+            </div>
+            <div class="form-group col-3">
+                <label for="">Email</label>
+                <input type="text" class="form-control" formControlName="user_email">
+            </div>
+            <div class="form-group col-3">
+                <label for="">Mobile</label>
+                <input type="number" class="form-control" formControlName="user_phone">
+            </div>
+        </div>
+    </form>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+                <button class="btn btn-sm btn-primary" (click)="addUser()">ADD</button>
+            </div>
+        </div>
+</div>
+
+<div class="card-box" *ngIf="addmore">
+    <form [formGroup]="addVendorForm">
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="">Business Name</label>
+                <input type="text" class="form-control" formControlName="business_name">
+            </div>
+            <div class="form-group col-6">
+                <label for="">Business Email</label>
+                <input type="text" class="form-control" formControlName="business_email">
+            </div>
+            <div class="form-group col-6">
+                <label for="">Business</label>
+                <input type="text" class="form-control" formControlName="business">
+            </div>
+            <div class="form-group col-6">
+                <label for="">Phone</label>
+                <input type="text" class="form-control" formControlName="business_phone">
+            </div>
+            <div class="form-group col-6">
+                <label for="">Business Registration Details</label>
+                <textarea cols="30" rows="10" class="form-control" formControlName="business_reg"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h5 class="form-lable">Business Location:</h5>
+                <input class="form-control" [(ngModel)]="address" style="padding:10px; width:75%" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+            </div>
+            <div class="map">
+                <agm-map 
+                    [latitude]="base_lat"
+                    [longitude]="base_lng"
+                    [zoom]="zoom"
+                    [disableDefaultUI]="false"
+                    [zoomControl]="false">
+    
+                    <agm-marker 
+                        [latitude]="location_lat"
+                        [longitude]="location_lng"
+                        [markerDraggable]="true"
+                        (dragEnd)="markerDragEnd($event)">
+                        
+                        <agm-info-window>
+                        <strong>{{address}}</strong>
+                        </agm-info-window>                       
+                    </agm-marker>
+                </agm-map>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+            <button class="btn btn-sm btn-primary" (click)="addVendor()">ADD</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,152 @@
+
+<section>
+    <div class="page-header">
+        <div>
+            <h2 class="main-content-title tx-24 mb-1">Add Product Detail</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Add Product Detail</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row row-sm">
+    <div class="col-lg-12">
+<div class="card custom-card">
+        <div class="card-body">
+            <div class="card-item">
+
+                <div class="row">
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Vendor :</h5>
+                        <p-dropdown [options]="vendor_list" [(ngModel)]="vendor_id" placeholder="Select Vendor" optionLabel="bussiness_name"
+                            [showClear]="true"></p-dropdown>
+
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Category :</h5>
+                        <p-dropdown [options]="Catagories_list" [(ngModel)]="cat_id" placeholder="Select Category" optionLabel="product_cate"
+                            [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Product Name :</h5>
+                        <input type="text" pInputText [(ngModel)]="product_name" placeholder="Enter Product Name" maxlength = "25">
+                    </div>
+                    <div class="col-md-12">
+                        <h5 class="form-lable">Description :</h5>
+                        <textarea pInputTextarea [(ngModel)]="product_discription" rows="5" cols="50"></textarea>
+                    </div>
+                    <hr>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Cost :</h5>
+                        <input type="number" pInputText [(ngModel)]="cost" placeholder="Cost">
+                    </div>
+
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Threshould :</h5>
+                        <input type="number" pInputText [(ngModel)]="threshould" placeholder="Threshould">
+                    </div>
+
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Price type :</h5>
+                        <input type="text" pInputText [(ngModel)]="price_type" placeholder="Price type">
+                    </div>
+
+                    <div class="col-md-6">
+                        <h5 class="form-lable">Condition :</h5>
+                        <input type="text" pInputText [(ngModel)]="condition" placeholder="Condition">
+                    </div>
+
+                    <div class="col-md-6">
+                        <h5 class="form-lable">Addition details:</h5>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" pInputText [(ngModel)]="addtion_info_text" placeholder="Addition details">
+                            </div>
+                            <div class="col-md-4">
+                                <button (click)="add_addition_info()" class="btn btn-sm btn-primary"><i
+                                    class="fa fa-plus"></i>Add Info</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-12" *ngIf="addition_detail.length > 0">
+                            <table class="table table-bordered table-striped table-sm">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">Addition details</th>
+                                        <th style="text-align: center;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let dynamic of addition_detail; let i = index;">
+                                        <td>{{dynamic}}</td>
+                                        <td style="text-align: center;"> <button (click)="delete_addition_info(dynamic,i)"
+                                            class="btn btn-sm btn-danger">Delete</button></td>
+                                    </tr>
+                                 </tbody>
+                                 </table>   
+                        </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="col-md-6">
+                        <h5 class="form-lable">Product image:</h5>
+                        <div class="form-group row">
+                           <div class="col-md-7">
+                                <input type="file" class="form-control"  #imgType1 (change)="fileupload($event)"
+                                    id="imgFile" accept=".png, .jpg, .jpeg">
+                                    <span class="img-size">Image Size Should be W 700 X H 350</span>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="imgthumcontainer"><img *ngIf="img_path != undefined" src="{{img_path}}"></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="">
+                                    <button (click)="addimg()" class="btn btn-sm btn-primary"><i
+                                            class="fa fa-plus"></i> Add Image</button>
+                                </div>
+                            </div>
+                            <div class="col-md-12" *ngIf="Thmp_list.length > 0">
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">Image</th>
+                                            <th style="text-align: center;">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let dynamic of Thmp_list; let i = index;">
+                                            <td style="text-align: center;"><div class="imgthumcontainer" style="width: 30px; height:30px;display: inline-block;"><img src="{{dynamic.product_img}}" ></div></td>
+                                            <td style="text-align: center;"> <button (click)="deleteimg(dynamic,i)"
+                                                    class="btn btn-sm btn-danger">Delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                      <h5 class="form-lable">thumbnail Image:</h5>
+                      <div class="form-group row">
+                         <div class="col-md-7">
+                              <input type="file" class="form-control"  #imgType2 (change)="fileupload2($event)"
+                                  id="imgFile" accept=".png, .jpg, .jpeg">
+                                  <span class="img-size">Image Size Should be W 200 X H 200</span>
+                          </div>
+                          <div class="col-md-2">
+                              <div class="imgthumcontainer"><img *ngIf="thumbnail_image != undefined" src="{{thumbnail_image}}"></div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                    <div class="col-md-12" style="padding-top: 20px;text-align: center;">
+                        <button type="button" style="height: 40px;min-width: 130px !important;font-size: 18px!important;" class="btn btn-primary" (click)="create()"><i class="fas fa-plus-circle"></i> Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+    </div>
+</section>

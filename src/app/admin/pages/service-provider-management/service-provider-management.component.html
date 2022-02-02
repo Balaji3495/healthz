@@ -1,0 +1,140 @@
+<h4 class="title">Service Provider Management</h4>
+<button type="button" style="margin-top: -24px;float:right;" class="btn btn-primary mr-0" (click)="doc_form()">Add</button>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="search-hero">
+            <div class="input-group mb-3">
+               <div class="input-group-prepend">
+                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+               </div>
+               <input class="form-control" type="text" name="search2"
+           [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+             </div>
+         </div>
+    </div>
+    <div class="col-md-3">
+        <h5 class="form-lable">Start Date</h5>
+        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
+    <div class="col-md-3">
+        <h5 class="form-lable">End Date</h5>
+        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="filter_date()">Search</button>
+        <button type="button" class="btn btn-primary" style="margin-top: 24px;" (click)="refersh()">Refresh</button>
+
+    </div>
+</div>
+<div class="doc-table">
+
+    <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+        [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+
+        <ng-template pTemplate="header">
+            <tr class="thhead">
+                <th class="th-1">
+                    S.No
+                </th>
+                <th>
+                    Service Provider Name
+                </th>
+                <th>
+                    Services
+                </th>
+                <th>
+                    Specialization
+                </th>
+                <th>Certificate</th>
+                <th>Govt ID proof </th>
+                <th>Photo ID proof</th>
+                <!-- <th>Created by</th>
+                <th>Modified by</th> -->
+                <th>Created at</th>
+                <th>Modified at</th>
+                <th>Device type</th>
+                <th>Approve / Reject</th>
+                <!-- <th>Live / Block</th> -->
+                <th style="width: 163px;text-align:center">
+                    Action
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-i="rowIndex">
+            <tr class="tdrow">
+                <td>{{i+1}}</td>
+                <td>{{item.bus_user_name}}</td>
+                <td>
+                    <ng-container *ngFor="let exp of item.bus_service_list">
+                        {{exp.bus_service_list}},
+                    </ng-container>
+                </td>
+                <td>
+                    <ng-container *ngFor="let exp of item.bus_spec_list">
+                        {{exp.bus_spec_list}},
+                    </ng-container>
+                </td>
+                <td class="act">
+                    <ng-container *ngFor="let doc of item.bus_certif">
+                        <i (click)="goToLink1(doc.bus_certif)" class="fas fa-file-pdf"
+                            style="cursor:pointer;background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
+                    </ng-container>
+               </td>
+                <td class="act">
+                    <i (click)="goToLink1(item.bus_proof)" class="fas fa-file-pdf"
+                    style="cursor:pointer;background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
+
+                </td>
+                <td class="act">
+                    <i (click)="goToLink1(item.bus_profile)" class="fas fa-file-pdf"
+                    style="cursor:pointer;background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
+
+                </td>
+                <!-- <td>
+                    User
+                </td>
+                <td>
+                    Admin
+                </td> -->
+                <td>
+                    {{item.createdAt}}
+                </td>
+                <td>
+                    {{item.updatedAt}}
+                </td>
+
+                <td>
+                    {{item.mobile_type}}
+                </td>
+                <td>
+                <button class="btn btn-success btn-sm" (click)="verify('Verified',item._id,item)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;"  *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
+                <button class="btn btn-danger btn-sm" (click)="verify('Not verified',item._id,item)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
+
+                    <!-- <i class="fa fa-check-circle-o" *ngIf="item.profile_verification_status == 'Not verified' "
+                        (click)="verify('Verified',item._id)" aria-hidden="true" style="color: rgb(2, 187, 57);"
+                        pTooltip="Approve">Approve</i>
+                    <i class="fa fa-times-circle-o" *ngIf="item.profile_verification_status == 'Verified' "
+                        (click)="verify('Not verified',item._id)" aria-hidden="true" style="color: rgb(223, 26, 26);"
+                        pTooltip="Reject">Reject</i> -->
+                </td>
+                <!-- <td class="act">
+                    <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
+                        pTooltip="Live"></i>
+                    <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"
+                        pTooltip="Block"></i>
+                </td> -->
+
+                <td class="act">
+                    <!-- <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"></i> -->
+                    <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                    <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+</div>

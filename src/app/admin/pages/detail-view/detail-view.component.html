@@ -1,0 +1,1325 @@
+<main class="profileview">
+    <section *ngIf="view_detail == 'Doctor'">
+        <ng-container *ngIf="doctor_details != undefined && preview_doctor_Details != undefined">
+
+
+            <div class="page-header">
+                <div>
+                    <h2 class="main-content-title tx-24 mb-1">Doctor Profile</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">View Details</li>
+                    </ol>
+                </div>
+
+                <div class="d-flex">
+                    <button class="btn btn-sm btn-secondary " (click)="back()">Back <i
+                            class="fas fa-arrow-right ml-1"></i></button>
+                </div>
+            </div>
+
+
+            <div class="gutter-top container">
+                <div class="row sticky-parent">
+                    <!-- Sidebar -->
+                    <aside class="col-12 col-md-12 col-xl-3">
+                        <div class="sidebar box shadow pb-0 sticky-column">
+
+                            <div class="" style="color: red;" *ngIf="doctor_clinic_pic !== previous_doctor_clinic_pic">
+                                Changes occur</div>
+                            <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                *ngIf="doctor_clinic_pic !== previous_doctor_clinic_pic">OLD
+                                Data</div>
+                            <div class="avatar avatar--180" *ngIf="doctor_clinic_pic !== previous_doctor_clinic_pic">
+                                <div class="avatar__box" *ngFor="let item of preview_doctor_Details.clinic_pic">
+                                    <img src="{{item.clinic_pic}}" class="pro-pic" height="100%" width="100%">
+                                </div>
+                            </div>
+
+                            <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                *ngIf="doctor_clinic_pic !== previous_doctor_clinic_pic">New
+                                Data</div>
+                            <div class="avatar avatar--180">
+                                <div class="avatar__box" *ngFor="let item of doctor_details.clinic_pic">
+                                    <img src="{{item.clinic_pic}}" class="pro-pic" height="100%" width="100%">
+                                </div>
+                            </div>
+
+
+                            <div class="text-center mb-4">
+
+                                <div class="" style="color: red;"
+                                    *ngIf="doctor_details.dr_name !== preview_doctor_Details.dr_name">Changes occur
+                                </div>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_details.dr_name !== preview_doctor_Details.dr_name">OLD DATA</div>
+                                <h3 class="title title--h3 sidebar__user-name text-theme old"
+                                    *ngIf="doctor_details.dr_name !== preview_doctor_Details.dr_name">
+                                    {{doctor_details.dr_title}}.{{preview_doctor_Details.dr_name}}</h3>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_details.dr_name !== preview_doctor_Details.dr_name">* NEW DATA</div>
+                                <h3 class="title title--h3 sidebar__user-name  text-theme new red_color">
+                                    {{preview_doctor_Details.dr_title}}.{{doctor_details.dr_name}}</h3>
+                                <div class="" style="color: red;"
+                                    *ngIf="doctor_education_details !== previous_doctor_education_details">Changes occur
+                                </div>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_education_details !== previous_doctor_education_details">OLD DATA
+                                </div>
+                                <div class="" *ngIf="doctor_education_details !== previous_doctor_education_details">
+                                    <ng-container *ngFor="let edu of preview_doctor_Details.education_details">
+                                        <div class="badge badge--light d-block mb-2">{{edu.education}}-{{edu.year}}
+                                        </div>
+                                    </ng-container>
+                                </div>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_education_details !== previous_doctor_education_details">* NEW DATA
+                                </div>
+                                <ng-container *ngFor="let edu of doctor_details.education_details">
+                                    <div class="badge badge--light d-block mb-2 red_color">{{edu.education}}-{{edu.year}}</div>
+                                </ng-container>
+                            </div>
+
+                            <div class="sidebar__info box-inner box-inner--rounded">
+                                <ul class="contacts-block">
+
+                                    <div class="" style="color: red;"
+                                        *ngIf="doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">
+                                        Changes occur</div>
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">
+                                        OLD DATA</div>
+                                    <li class="contacts-block__item"
+                                        *ngIf="doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">
+                                        <i class="font-icon fas fa-phone-alt text-theme"></i>
+                                        {{doctor_details.user_id.user_phone}}
+                                    </li>
+
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">
+                                        NEW DATA</div>
+                                    <li class="contacts-block__item">
+                                        <i class="font-icon fas fa-phone-alt text-theme"></i>
+                                        {{preview_doctor_Details.user_id.user_phone}}
+                                    </li>
+
+
+                                    <div class="" style="color: red;"
+                                        *ngIf="doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">
+                                        Changes occur</div>
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">
+                                        OLD DATA</div>
+                                    <li class="contacts-block__item"
+                                        *ngIf="doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">
+                                        <span><i class="font-icon fas fa-envelope text-theme"></i>
+                                            {{doctor_details.user_id.user_email}}</span>
+                                    </li>
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">
+                                        NEW DATA</div>
+                                    <li class="contacts-block__item">
+                                        <span><i class="font-icon fas fa-envelope text-theme"></i>
+                                            {{preview_doctor_Details.user_id.user_email}}</span>
+                                    </li>
+
+
+                                </ul>
+                                <div class="text-center mb-4">
+                                    <h4 class="mb-1 text-theme"><strong>Profile Stauts:</strong></h4>
+                                    <div class="" style="color: red;"
+                                        *ngIf="doctor_details.profile_status !== preview_doctor_Details.profile_status">
+                                        Changes occur</div>
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.profile_status !== preview_doctor_Details.profile_status">
+                                        OLD
+                                        DATA</div>
+                                    <div class="badge badge--aqua d-block mb-2"
+                                        *ngIf="doctor_details.profile_status !== preview_doctor_Details.profile_status">
+                                        {{doctor_details.profile_status}}</div>
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.profile_status !== preview_doctor_Details.profile_status">
+                                        NEW
+                                        DATA</div>
+                                    <div class="badge badge--aqua d-block mb-2">
+                                        {{preview_doctor_Details.profile_status}}
+                                    </div>
+
+
+                                </div>
+
+                                <div class="text-center">
+                                    <h4 class="mb-1 text-theme"><strong>Clinic Name & Location</strong></h4>
+                                    <div class="" style="color: red;"
+                                        *ngIf="doctor_details.clinic_name !== preview_doctor_Details.clinic_name">
+                                        Changes
+                                        occur</div>
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.clinic_name !== preview_doctor_Details.clinic_name">New
+                                        DATA
+                                    </div>
+                                    <h3 class="mb-0"
+                                        *ngIf="doctor_details.clinic_name !== preview_doctor_Details.clinic_name">
+                                        <strong>{{doctor_details.clinic_name}}</strong>
+                                    </h3>
+                                    <p *ngIf="doctor_details.clinic_name !== preview_doctor_Details.clinic_name">
+                                        {{doctor_details.clinic_loc}}</p>
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.clinic_name !== preview_doctor_Details.clinic_name">Old
+                                        DATA
+                                    </div>
+                                    <h3 class="mb-0"><strong>{{preview_doctor_Details.clinic_name}}</strong></h3>
+                                    <p> {{preview_doctor_Details.clinic_loc}}</p>
+                                </div>
+
+
+                                <div class="text-center">
+                                    <div class="" style="color: red;"
+                                        *ngIf="doctor_details.consultancy_fees !== preview_doctor_Details.consultancy_fees">
+                                        Changes occur</div>
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.consultancy_fees !== preview_doctor_Details.consultancy_fees">
+                                        OLD
+                                        Data</div>
+                                    <h4 *ngIf="doctor_details.consultancy_fees !== preview_doctor_Details.consultancy_fees"
+                                        class="mb-1 text-theme"><strong>RS {{preview_doctor_Details.consultancy_fees}}
+                                            /-</strong>
+                                    </h4>
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                        *ngIf="doctor_details.consultancy_fees !== preview_doctor_Details.consultancy_fees">
+                                        NEW DATA
+                                    </div>
+                                    <h4 class="mb-1 text-theme"><strong>RS {{preview_doctor_Details.consultancy_fees}}
+                                            /-</strong>
+                                    </h4>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Content -->
+                    <div class="col-12 col-md-12 col-xl-9">
+                        <div class="box shadow pb-0">
+
+                            <!-- About -->
+                            <div class="pb-3">
+                                <h2 class="title--h1 first-title title__separate text-theme">Specialisation</h2>
+                                <div class="" style="color: red;"
+                                    *ngIf="doctor_spec_details !== previous_doctor_spec_details">
+                                    Changes occur</div>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_spec_details !== previous_doctor_spec_details">OLD
+                                    Data</div>
+                                <ng-container *ngIf="doctor_spec_details !== previous_doctor_spec_details">
+
+                                    <ng-container *ngFor="let spe of doctor_details.specialization">
+                                        <span
+                                            class="badge badge--green-gradient mr-2 mb-2">{{spe.specialization}}</span>
+
+                                    </ng-container>
+                                </ng-container>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_spec_details !== previous_doctor_spec_details">NEW DATA
+                                </div>
+                                <ng-container *ngFor="let spe of preview_doctor_Details.specialization">
+                                    <span class="badge badge--green-gradient mr-2 mb-2">{{spe.specialization}}</span>
+
+                                </ng-container>
+
+                            </div>
+
+                            <!-- What -->
+                            <!-- <div class="box-inner">
+                                <h2 class="title--h1 first-title title__separate text-theme">Pets handled</h2>
+                                <div class="" style="color: red;"
+                                    *ngIf="doctor_pet_handle_details !== previous_doctor_pet_handle_details">
+                                    Changes occur</div>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_pet_handle_details !== previous_doctor_pet_handle_details">OLD
+                                    Data</div>
+                                <ng-container *ngIf="doctor_pet_handle_details !== previous_doctor_pet_handle_details">
+
+                                    <ng-container *ngFor="let spe of doctor_details.pet_handled">
+                                        <span class="badge badge--dark mr-2 mb-2">{{spe.pet_handled}}</span>
+                                    </ng-container>
+                                </ng-container>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_pet_handle_details !== previous_doctor_pet_handle_details">NEW DATA
+                                </div>
+                                <ng-container *ngFor="let spe of preview_doctor_Details.pet_handled">
+                                    <span class="badge badge--dark mr-2 mb-2">{{spe.pet_handled}}</span>
+                                </ng-container>
+
+                            </div> -->
+
+                            <!-- experience -->
+                            <div class="box-inner box-inner--white">
+                                <h2 class="title--h1 first-title title__separate text-theme">Experience</h2>
+                                <div class="" style="color: red;"
+                                    *ngIf="doctor_experience_details !== previous_doctor_experience_details">
+                                    Changes occur</div>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_experience_details !== previous_doctor_experience_details">OLD
+                                    Data</div>
+                                <ng-container *ngIf="doctor_experience_details !== previous_doctor_experience_details">
+
+
+                                    <div class="resume">
+                                        <div class="resume_item resume_work">
+
+                                            <ul>
+                                                <ng-container *ngFor="let exp of preview_doctor_Details.experience_details">
+                                                    <li>
+                                                        <div class="date">({{exp.from}}-{{exp.to}})</div>
+                                                        <h3>{{exp.company}}</h3>
+                                                    </li>
+                                                </ng-container>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </ng-container>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_experience_details !== previous_doctor_experience_details">NEW DATA
+                                </div>
+                                <div class="resume">
+                                    <div class="resume_item resume_work">
+
+                                        <ul>
+                                            <ng-container *ngFor="let exp of doctor_details.experience_details">
+                                                <li>
+                                                    <div class="date">({{exp.from}}-{{exp.to}})</div>
+                                                    <h3>{{exp.company}}</h3>
+                                                </li>
+                                            </ng-container>
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="box-inner">
+                                <table class="table table-sm table-bordered mb-0">
+                                    <tr class="thhead">
+
+                                        <th style="color:#fff">Certificate</th>
+                                        <th style="color:#fff">Govt ID proof </th>
+                                        <th style="color:#fff">Photo ID proof</th>
+                                    </tr>
+                                    <tr class="tdrow">
+                                        <td class="act">
+                                            <ng-container *ngFor="let govt_id_pic of doctor_details.certificate_pic">
+                                                <i (click)="goToLink1(govt_id_pic.govt_id_pic)"
+                                                    class="fas fa-file-pdf text-danger"></i>
+                                            </ng-container>
+                                        </td>
+                                        <td class="act">
+                                            <ng-container
+                                                *ngFor="let certificate_pic of doctor_details.govt_id_pic">
+                                                <i (click)="goToLink1(certificate_pic.certificate_pic)"
+                                                    class="fas fa-file-pdf text-danger"></i>
+                                            </ng-container>
+                                        </td>
+                                        <td class="act">
+                                            <ng-container *ngFor="let photo_id_pic of doctor_details.photo_id_pic">
+                                                <i (click)="goToLink1(photo_id_pic.photo_id_pic)"
+                                                    class="fas fa-file-pdf text-danger"></i>
+                                            </ng-container>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                            <div class="box-inner box-inner--white box-inner--rounded">
+
+                                <div class="row" *ngIf="this.view_detail != 'liveDoctor'">
+                                    <div class="col-md-4">
+                                        <ng-container *ngIf="view_detail_data.profile_verification_status =='Verified'">
+                                          <button type="button" class="btn btn-primary"
+                                          *ngIf="view_detail_data.live_status == 'Not Live' "
+                                          (click)="makelive()"><i
+                                              class="fas fa-user-check"></i>Make Live</button>
+
+
+                                            <!-- <button type="button" class="btn btn-primary"
+                                                *ngIf="view_detail_data.live_status == 'Not Live' "
+                                                (click)="live_status_change('Live',view_detail_data._id)"><i
+                                                    class="fas fa-user-check"></i> Make Live</button>
+                                            <button type="button" class="btn btn-danger"
+                                                *ngIf="view_detail_data.live_status == 'Live'"
+                                                (click)="live_status_change('Not Live',view_detail_data._id)"><i
+                                                    class="fas fa-user-slash"></i> Un Live</button> -->
+                                        </ng-container>
+                                    </div>
+                                    <!-- <div class="col-md-4">
+                          <button (click)="verify('Verified',view_detail_data._id)"  style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="view_detail_data.profile_verification_status != 'Verified'">Approve</button>
+                          <button (click)="verify('Not verified',view_detail_data._id)" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="view_detail_data.profile_verification_status == 'Verified'">Reject</button>
+                        </div> -->
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-primary"
+                                            *ngIf="view_detail_data.profile_verification_status != 'Verified' "
+                                            (click)="verify('Verified',view_detail_data._id)"><i
+                                                class="fas fa-user-check"></i> Approve</button>
+                                        <button type="button" class="btn btn-danger"
+                                            *ngIf="view_detail_data.profile_verification_status == 'Verified' "
+                                            (click)="verify('Not verified',view_detail_data._id)"><i
+                                                class="fas fa-user-slash"></i> Reject</button>
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <!-- <a class="btn btn-outline-primary mr-2" href="#"><i class="fas fa-certificate"></i> Certificate</a> -->
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </ng-container>
+    </section>
+</main>
+
+<!-- <section *ngIf="view_detail == 'Doctor'">
+    <div class="container" style="width: 100%;">
+        <p (click)="back()"> <i class="fa fa-arrow-left"></i> Back </p>
+        <div class="card-box">
+            <div class="row" style="padding: 0px 0px 23px 10px;">
+                <div class="col-md-3">
+                    <img src="{{view_detail_data.clinic_pic[0].clinic_pic}}" class="pro-pic">
+                </div>
+                <div class="col-md-9" style="padding-left: 20px;">
+                    <h1 style="margin-bottom: 0px;">{{view_detail_data.dr_title}}.{{view_detail_data.dr_name}}</h1>
+                    <p class="title">
+                        <ng-container *ngFor="let edu of view_detail_data.education_details">
+                            {{edu.education}}-{{edu.year}} ,
+                        </ng-container>
+                    </p>
+                    <p><i class="fa fa-envelope-o"></i> {{view_detail_data.user_id.user_email}} - <i
+                            class="fa fa-phone"></i> {{view_detail_data.user_id.user_phone}}</p>
+                    <p style="font-size:12px;font-weight: 500;"><i class="fa fa-briefcase"></i>
+                        <ng-container *ngFor="let exp of view_detail_data.experience_details">
+                            {{exp.company}}({{exp.from}}-{{exp.to}}) ,
+                        </ng-container>
+                    </p>
+                    <p style="font-size:12px;font-weight: 700;">Profile Stauts: <span
+                            style="font-weight: 400;">{{view_detail_data.profile_status}}</span></p>
+
+                    <button type="button" class="btn btn-primary"
+                        *ngIf="view_detail_data.profile_verification_status == 'Not verified' "
+                        (click)="verify('Verified',view_detail_data._id)"
+                        style="margin-left: 10px;margin-top: 24px; width: 110px;height: auto;background-color: #1E88E5;font-size: 12px;">Approve</button>
+                    <button type="button" class="btn btn-danger"
+                        *ngIf="view_detail_data.profile_verification_status == 'Verified' "
+                        (click)="verify('Not verified',view_detail_data._id)"
+                        style="margin-left: 10px;margin-top: 24px; width: 110px;font-size: 12px;">Reject</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 25px;">
+                <div class="spec">
+                    <h5>More Details</h5>
+
+                </div>
+                <div class="card-box">
+                    <div>
+                        <table cellpadding="5" cellspacing="0">
+                            <tr>
+                                <th> <label for="f-user"> Specialisation </label> </th>
+
+                                <td class="desc">
+                                    <ng-container *ngFor="let spe of view_detail_data.specialization">
+                                        <span class="badge badge--light">{{spe.specialization}}</span> ,
+
+                                    </ng-container>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-user"> Pets handled </label> </th>
+
+                                <td class="desc">
+                                    <ng-container *ngFor="let spe of view_detail_data.pet_handled">
+                                        {{spe.pet_handled}},
+                                    </ng-container>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th> <label for="f-email"> Clinic Name </label> </th>
+                                <td class="desc"> {{view_detail_data.clinic_name}} </td>
+
+                            </tr>
+
+                            <tr>
+                                <th><label for="f-tos"> Clinic Location</label></th>
+                                <td class="desc"> {{view_detail_data.clinic_loc}} </td>
+                            </tr>
+
+
+
+                        </table>
+
+                        <table>
+                            <tr class="thhead">
+
+                                <th style="color:#fff">Certificate</th>
+                                <th style="color:#fff">Govt ID proof </th>
+                                <th style="color:#fff">Photo ID proof</th>
+                            </tr>
+                            <tr class="tdrow">
+                                <td class="act">
+                                    <ng-container *ngFor="let govt_id_pic of view_detail_data.govt_id_pic">
+                                        <i (click)="goToLink1(govt_id_pic.govt_id_pic)" class="fas fa-file-pdf"
+                                            style="background-color: #fff;color: #fd2c3a;"></i>
+                                    </ng-container>
+                                </td>
+                                <td class="act">
+                                    <ng-container *ngFor="let certificate_pic of view_detail_data.certificate_pic">
+                                        <i (click)="goToLink1(certificate_pic.certificate_pic)" class="fas fa-file-pdf"
+                                            style="background-color: #fff;color: #fd2c3a;"></i>
+                                    </ng-container>
+                                </td>
+                                <td class="act">
+                                    <ng-container *ngFor="let photo_id_pic of view_detail_data.photo_id_pic">
+                                        <i (click)="goToLink1(photo_id_pic.photo_id_pic)" class="fas fa-file-pdf"
+                                            style="background-color: #fff;color: #fd2c3a;"></i>
+                                    </ng-container>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section> -->
+
+<section *ngIf="view_detail == 'User'">
+    <section>
+        <div class="page-header">
+            <div>
+                <h2 class="main-content-title tx-24 mb-1">Customer Profile</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">View Details</li>
+                </ol>
+            </div>
+
+            <div class="d-flex">
+                <button class="btn btn-sm btn-secondary " (click)="back()">Back <i
+                        class="fas fa-arrow-right ml-1"></i></button>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="container" style="width: 100%;">
+        <div class="card-box">
+            <div class="row" style="padding: 0px 0px 23px 10px;">
+                <table class="table table-sm table-bordered">
+                    <tr class="thhead">
+
+                        <!-- <th style="color:#fff">Image</th> -->
+                        <th style="color:#fff">Name </th>
+                        <th style="color:#fff">Email ID</th>
+                        <th style="color:#fff">Phone Number</th>
+                    </tr>
+                    <tr class="tdrow">
+                        <!-- <td class="act">
+                            <img src="assets/images/005.png" style="width: 50px;height: 50px;">
+                        </td> -->
+                        <td class="act">
+                            {{view_detail_data.userdetailsModels[0].first_name}}
+                            {{view_detail_data.userdetailsModels[0].last_name}}
+                        </td>
+                        <td class="act">
+                            {{view_detail_data.userdetailsModels[0].user_email}}
+                        </td>
+                        <td class="act">
+                            {{view_detail_data.userdetailsModels[0].user_phone}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="row">
+                <div class="col-md-12" style="margin-top: 25px;">
+
+                    <div>
+                        <h4> <label>Pet List</label> </h4>
+
+                        <div class="doc-table">
+                            <p-table [value]="view_detail_data.petdetailsModels " styleClass="ui-table-customers" #tt
+                                [paginator]="true" [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]"
+                                [showCurrentPageReport]="true"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [globalFilterFields]="['type']">
+
+                                <ng-template pTemplate="header">
+                                    <tr class="thhead">
+                                        <th class="th-1">
+                                            S.No
+                                        </th>
+                                        <th>
+                                            Pet Photo
+                                        </th>
+                                        <th>
+                                            Pet name
+                                        </th>
+                                        <th>
+                                            Pet Type
+                                        </th>
+                                        <th>
+                                            Pet Breed
+                                        </th>
+                                        <th>
+                                            Pet Gender
+                                        </th>
+                                        <th>
+                                            Pet Color
+                                        </th>
+                                        <th>
+                                            Pet weight
+                                        </th>
+                                        <th>
+                                            Pet age
+                                        </th>
+                                        <th>
+                                            Vaccinated
+                                        </th>
+                                        <th>
+                                            Last Vaccinated date
+                                        </th>
+                                        <!-- <th>Created by</th>
+                                        <th>Modified by</th> -->
+                                        <th>Created at</th>
+                                        <!-- <th>Modified at</th> -->
+                                        <th style="width: 100px;text-align:center">
+                                            Action
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                                    <tr class="tdrow">
+                                        <td>{{i+1}}</td>
+                                        <td>
+                                            <div class="imgthumcontainer">
+                                                <img src="{{item.pet_img}}" alt="">
+                                            </div>
+                                        </td>
+                                        <td>{{item.pet_name}}</td>
+                                        <td>{{item.pet_type}}</td>
+                                        <td>{{item.pet_breed}}</td>
+                                        <td>{{item.pet_gender}}</td>
+                                        <td>{{item.pet_color}}</td>
+                                        <td>{{item.pet_weight}} kg</td>
+                                        <td>{{item.pet_age}} Year</td>
+                                        <td>{{item.vaccinated}}</td>
+                                        <td>{{item.last_vaccination_date}}</td>
+                                        <td>{{item.date_and_time}}</td>
+
+                                        <td class="act" style="text-align:center">
+                                            <!-- <i style="color: #2196f3;" class="fas fa-edit"
+                                                pTooltip="Edit"></i> -->
+                                            <i style="color: #fd2c3a;" class="fa fa-trash" pTooltip="Delete"
+                                                (click)="delete_pet(item._id)"></i>
+                                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle"
+                                                pTooltip="View"></i> -->
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="margin-top: 25px;">
+
+                    <div>
+                        <h4> <label>Location List</label> </h4>
+
+                        <div class="">
+                            <p-table [value]="view_detail_data.locationdetailsModels" styleClass="ui-table-customers"
+                                #tt [paginator]="true" [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]"
+                                [showCurrentPageReport]="true"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [globalFilterFields]="['type']">
+
+                                <ng-template pTemplate="header">
+                                    <tr class="thhead">
+                                        <th class="th-1">
+                                            S.No
+                                        </th>
+                                        <th>
+                                            Location Type
+                                        </th>
+                                        <th>
+                                            Location Address
+                                        </th>
+                                        <th>
+                                            Country
+                                        </th>
+                                        <th>
+                                            State
+                                        </th>
+                                        <th>
+                                            City
+                                        </th>
+                                        <th>
+                                            Pin
+                                        </th>
+                                        <th>Created at</th>
+                                        <!--  <th>
+                                            Pet Breed
+                                        </th>
+                                        <th>
+                                            Pet Gender
+                                        </th>
+                                        <th>
+                                            Pet Color
+                                        </th>
+                                        <th>
+                                            Pet weight
+                                        </th>
+                                        <th>
+                                            Pet age
+                                        </th>
+                                        <th>
+                                            Vaccinated
+                                        </th>
+                                        <th>
+                                            Last Vaccinated date
+                                        </th>
+                                        <th>Created by</th>
+                                        <th>Modified by</th>
+                                        <th>Created at</th>
+                                        <th>Modified at</th>
+                                         -->
+                                        <th style="width: 163px;text-align:center">
+                                            Action
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                                    <tr class="tdrow">
+                                        <td>{{i+1}}</td>
+                                        <!-- <td>
+                                            <div class="card-box-i">
+                                                <img src="assets/images/007.png" alt="">
+                                            </div>
+                                        </td> -->
+                                        <td>{{item.location_title}}</td>
+                                        <td>{{item.location_address}}</td>
+                                        <td>{{item.location_country}}</td>
+                                        <td>{{item.location_state}}</td>
+                                        <td>{{item.location_city}}</td>
+                                        <td>{{item.location_pin}}</td>
+                                        <td>{{item.date_and_time}}</td>
+                                        <!-- <td>Male</td>
+                                        <td>White</td>
+                                        <td>15kg</td>
+                                        <td>3 years</td>
+                                        <td>Yes</td>
+                                        <td>16-09-2020</td>
+                                        <td>
+                                            User
+                                        </td>
+                                        <td>
+                                            Admin
+                                        </td>
+                                        <td>
+                                            16-09-2020
+                                        </td>
+                                        <td>
+                                            17-09-2020
+                                        </td>-->
+                                        <td class="act" style="text-align:center">
+                                            <!-- <i style="color: #2196f3;" class="fas fa-edit"
+                                                pTooltip="Edit"></i> -->
+                                            <i style="color: #fd2c3a;" class="fa fa-trash" pTooltip="Delete"
+                                                (click)="delete_loc(item._id)"></i>
+                                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle"
+                                                pTooltip="View"></i> -->
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="margin-top: 25px;">
+
+
+                    <div>
+                        <h4> <label>Appointment List</label> </h4>
+
+                        <div class="doc-table-1" style="margin-bottom: 25px;">
+                            <p-table [value]="view_detail_data.AppointmentsModel" styleClass="ui-table-customers" #tt
+                                [paginator]="true" [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]"
+                                [showCurrentPageReport]="true"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [globalFilterFields]="['type']">
+
+                                <ng-template pTemplate="header">
+                                    <tr class="thhead">
+                                        <th class="th-1">
+                                            S.No
+                                        </th>
+                                        <th>
+                                            Appointment Type
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                        <th>
+                                            Booking Date & Time
+                                        </th>
+                                        <th>
+                                            Start Appointment Status
+                                        </th>
+                                        <th>
+                                            End Appointment Status
+                                        </th>
+                                        <th>
+                                            Attachments
+                                        </th>
+                                        <th>Device type</th>
+                                        <th>Amount</th>
+                                        <!-- <th>
+                                            Pet weight
+                                        </th>
+                                        <th>
+                                            Pet age
+                                        </th>
+                                        <th>
+                                            Vaccinated
+                                        </th>
+                                        <th>
+                                            Last Vaccinated date
+                                        </th>
+                                        <th>Created by</th>
+                                        <th>Modified by</th>
+                                        <th>Created at</th>
+                                        <th>Modified at</th>
+                                        <th style="width: 163px;text-align:center">
+                                            Action
+                                        </th> -->
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                                    <tr class="tdrow">
+                                        <td>{{i+1}}</td>
+                                        <!-- <td>
+                                            <div class="card-box-i">
+                                                <img src="assets/images/007.png" alt="">
+                                            </div>
+                                        </td> -->
+
+                                        <td>{{item.appointment_types}}</td>
+                                        <td>{{item.appoinment_status}}</td>
+                                        <td>{{item.booking_date_time}}</td>
+                                        <td>
+                                            {{item.start_appointment_status}}
+                                        </td>
+                                        <td>
+                                            {{item.end_appointment_status}}
+                                        </td>
+                                        <td class="act">
+                                            <ng-container *ngFor="let photo_id_pic of item.doc_attched">
+                                                <i (click)="goToLink1(photo_id_pic.file)" class="fas fa-file-pdf"
+                                                    style="background-color: #fff;color: #fd2c3a;"></i>
+                                            </ng-container>
+                                        </td>
+                                        <td>{{item.mobile_type}}</td>
+                                        <td>{{item.amount}}</td>
+                                        <!-- <td class="act">
+                                            <i style="color: #2196f3;" class="fas fa-edit"
+                                                pTooltip="Edit"></i>
+                                            <i style="color: #fd2c3a;" class="fa fa-trash"
+                                                pTooltip="Delete"></i>
+                                            <i style="color: #4CAF50;" class="fa fa-info-circle"
+                                                pTooltip="View"></i>
+                                        </td> -->
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="view_detail == 'Appointment'">
+    <div class="container" style="width: 100%;">
+        <p (click)="back()"> <i class="fa fa-arrow-left"></i> Back </p>
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 25px;">
+                <div class="spec">
+                    <h4> <label style="color: #007adb;">Appointment Details</label> </h4>
+                </div>
+                <div class="card-box" style="padding: 5px 5px 5px 5px">
+                    <div class="app-i">
+                        <table cellpadding="5" cellspacing="0">
+                            <tr>
+                                <th> <label for="f-user"> Doctor Name </label> </th>
+
+                                <td class="desc">
+                                    {{view_detail_data.doc_business_info[0].dr_title}}.{{view_detail_data.doc_business_info[0].dr_name}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-user"> Appointment Date & Time </label> </th>
+
+                                <td class="desc">
+                                    {{view_detail_data.booking_date_time}}
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th> <label for="f-pass1"> Date of Birth </label> </th>
+
+                                <td class="desc"> data.DOB</td>
+                            </tr> -->
+                            <tr>
+                                <th> <label for="f-pass2">Appointment Type </label> </th>
+
+                                <td class="desc">{{view_detail_data.appointment_types}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Status </label> </th>
+
+                                <td class="desc"> {{view_detail_data.appoinment_status}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Booking Date & Time</label> </th>
+
+                                <td class="desc">{{view_detail_data.booking_date_time}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Start Appointment Status</label> </th>
+
+                                <td class="desc">{{view_detail_data.start_appointment_status}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">End Appointment Status</label> </th>
+
+                                <td class="desc">{{view_detail_data.end_appointment_status}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Consultation type</label> </th>
+
+                                <td class="desc">{{view_detail_data.communication_type}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Device type</label> </th>
+
+                                <td class="desc">{{view_detail_data.mobile_type}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Payment Method</label> </th>
+
+                                <td class="desc">{{view_detail_data.payment_method}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Amount</label> </th>
+
+                                <td class="desc">{{view_detail_data.amount}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Prescription Details</label> </th>
+
+                                <td class="desc">{{view_detail_data.prescription_details}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Doctor Feedback</label> </th>
+
+                                <td class="desc">{{view_detail_data.doc_feedback}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Customer Feedback</label> </th>
+
+                                <td class="desc">{{view_detail_data.user_feedback}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Attachments</label> </th>
+
+                                <td class="act desc">
+                                    <ng-container *ngFor="let photo_id_pic of view_detail_data.doc_attched">
+                                        <i (click)="goToLink1(photo_id_pic.file)" class="fas fa-file-pdf"
+                                            style="background-color: #fff;color: #fd2c3a;"></i>
+                                    </ng-container>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th> <label for="f-tos">Available Hours </label> </th>
+
+                                <td class="desc"> data.AvailableHours </td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-tos"> Available Type </label> </th>
+
+                                <td class="desc"> data.Available_type </td>
+                            </tr> -->
+                            <!-- <tr>
+                                <th> <label for="f-tos"> Charges Per Appointment </label> </th>
+
+                                <td class="desc"> data.Charge_Per_15min </td>
+                            </tr> -->
+                            <!-- <tr>
+                                <th><label for="f-tos"> Live Status</label></th>
+                                <td class="desc"> data.Live_Status </td>
+                            </tr> -->
+                            <!-- <tr>
+                                <th><label for="f-tos"> Current Location</label></th>
+                                <td class="desc"> {{view_detail_data.booking_date_time}}</td>
+                            </tr> -->
+
+                            <!-- <tr>
+                                <th><label for="f-tos">Doctor Brife</label></th>
+                                <td class="desc"> data.Special_mention </td>
+                            </tr> -->
+
+
+                            <!-- <tr>
+                                <th><label for="f-tos">About Doctor</label></th>
+                                <td class="desc"> data.Information </td>
+                            </tr> -->
+                            <!-- <tr>
+                                <th><label for="f-tos">KMS Registration Number</label></th>
+                                <td class="desc"> data.KMS_registration </td>
+                            </tr>
+                            <tr>
+                                <th><label for="f-tos">Signature</label></th>
+                                <td class="desc"> <img style="width: 100px;" src="data.signature" alt="" /> </td>
+                            </tr> -->
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 25px;">
+                <div class="spec">
+                    <h4> <label style="color: #007adb;">User Details</label> </h4>
+                </div>
+                <div class="card-box">
+
+                    <div class="row" style="padding: 0px 0px 23px 10px;">
+                        <table style="width: 100% !important;">
+                            <tr class="thhead">
+
+                                <!-- <th style="color:#fff">Image</th> -->
+                                <th style="color:#fff">Name </th>
+                                <th style="color:#fff">Email ID</th>
+                                <th style="color:#fff">Phone Number</th>
+                            </tr>
+                            <tr class="tdrow">
+                                <!-- <td class="act">
+                                    <img src="assets/images/005.png" style="width: 50px;height: 50px;">
+                                </td> -->
+                                <td class="act">
+                                    {{view_detail_data.user_id.first_name}} {{view_detail_data.user_id.last_name}}
+                                </td>
+                                <td class="act">
+                                    {{view_detail_data.user_id.user_email}}
+                                </td>
+                                <td class="act">
+                                    {{view_detail_data.user_id.user_phone}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 25px;">
+                <div class="spec">
+                    <h4> <label style="color: #007adb;">Doctor Details</label> </h4>
+                </div>
+                <div class="card-box">
+                    <div class="row" style="padding: 0px 0px 23px 10px;">
+                        <div class="col-md-3">
+                            <img src="{{view_detail_data.doc_business_info[0].clinic_pic[0].clinic_pic}}"
+                                class="pro-pic" style="width: 150px;border-radius: 50%;height: 150px;">
+                        </div>
+                        <div class="col-md-9" style="padding-left: 20px;">
+                            <h1 style="margin-bottom: 0px;padding-left: 4px;">
+                                {{view_detail_data.doc_business_info[0].dr_title}}.{{view_detail_data.doc_business_info[0].dr_name}}
+                            </h1>
+                            <div class=" app-i">
+                                <table cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <th> <label for="f-user">Clinic Name</label> </th>
+
+                                        <td class="desc">
+                                            {{view_detail_data.doc_business_info[0].clinic_name}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> <label for="f-user">Clinic Location</label> </th>
+
+                                        <td class="desc">
+                                            {{view_detail_data.doc_business_info[0].clinic_loc}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th> <label for="f-user">specialization</label> </th>
+
+                                        <td>
+                                            <ng-container
+                                                *ngFor="let spec of view_detail_data.doc_business_info[0].specialization">
+                                                {{spec.specialization}},
+                                            </ng-container>
+                                        </td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <th> <label for="f-user">Pet Handled</label> </th>
+
+                                        <td>
+                                            <ng-container
+                                                *ngFor="let spec of view_detail_data.doc_business_info[0].pet_handled">
+                                                {{spec.pet_handled}},
+                                            </ng-container>
+                                        </td>
+                                    </tr> -->
+
+
+
+                                </table>
+                            </div>
+
+                            <!-- <p class="title">
+                                <ng-container *ngFor="let edu of view_detail_data.doc_business_info[0].education_details">
+                                    {{edu.education}}-{{edu.year}} ,
+                                </ng-container>
+                            </p>
+                            <p><i class="fa fa-envelope-o"></i> {{view_detail_data.doctor_id.user_email}} - <i
+                                    class="fa fa-phone"></i> {{view_detail_data.doctor_id.user_phone}}</p>
+                            <p style="font-size:12px;font-weight: 500;"><i class="fa fa-briefcase"></i>
+                                <ng-container *ngFor="let exp of view_detail_data.doc_business_info[0].experience_details">
+                                    {{exp.company}}({{exp.from}}-{{exp.to}}) ,
+                                </ng-container>
+                            </p> -->
+                            <!-- <p style="font-size:12px;font-weight: 700;">Profile Stauts: <span
+                                    style="font-weight: 400;">{{view_detail_data.doc_business_info[0].profile_status}}</span></p> -->
+                            <!-- <div class="p-field p-col-12 p-md-4">
+                                <label (click)="doc_cal()">Doctor Calendar <i class="fa fa-calendar"
+                                       ></i></label>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 25px;">
+                <div class="spec">
+                    <h4> <label style="color: #007adb;">Pet Details</label> </h4>
+                </div>
+                <div class="card-box">
+                    <div class="row" style="padding: 0px 0px 23px 10px;">
+                        <div class="col-md-3">
+                            <img src="{{view_detail_data.pet_id.pet_img}}" class="pro-pic"
+                                style="width: 150px;border-radius: 50%;height: 150px;">
+                        </div>
+                        <div class="col-md-9 app-i" style="padding-left: 20px;">
+                            <table cellpadding="5" cellspacing="0">
+                                <tr>
+                                    <th> <label for="f-user">Pet Name</label> </th>
+
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_name}} </td>
+                                </tr>
+                                <tr>
+                                    <th> <label for="f-user">Pet Breed</label> </th>
+
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_breed}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th> <label for="f-user">Pet Type</label> </th>
+
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_type}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th> <label for="f-user">Pet Color</label> </th>
+
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_color}}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th> <label for="f-user">Pet Gender</label> </th>
+
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_gender}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th> <label for="f-user">Pet Weight</label> </th>
+
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_weight}}
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section *ngIf="view_detail == 'vendor'">
+    <section>
+        <div class="page-header">
+            <div>
+                <h2 class="main-content-title tx-24 mb-1">Vendor Profile</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">View Details</li>
+                </ol>
+            </div>
+
+            <div class="d-flex">
+                <button class="btn btn-sm btn-secondary " (click)="back()">Back <i
+                        class="fas fa-arrow-right ml-1"></i></button>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="container" style="width: 100%;">
+        <div class="card-box">
+
+            <div class=" box shadow pb-0 sticky-column">
+
+
+                <div style="display: block;margin-left: auto;margin-right: auto;margin-bottom: .25rem;" class="avatar avatar--180">
+                    <div
+                        class="avatar__box" *ngFor="let item of view_detail_data.bussiness_gallery">
+                        <img src="{{item.bussiness_gallery}}" class="pro-pic" height="100%" width="100%">
+                    </div>
+
+                </div>
+
+                <div class="text-center mb-4">
+                    <h3 class="title title--h3 sidebar__user-name text-theme">
+                        {{view_detail_data.bussiness_name}}</h3>
+
+                </div>
+
+                <div class="text-center sidebar__info box-inner box-inner--rounded">
+                    <ul class="contacts-block">
+
+                        <li style="display: block;margin-left: auto;margin-right: auto;margin-bottom: .25rem;"
+                            class="contacts-block__item">
+                            <i class="font-icon fas fa-phone-alt text-theme"></i>
+                            {{view_detail_data.bussiness_phone}}
+                        </li>
+
+
+                        <li style="display: block;margin-left: auto;margin-right: auto;margin-bottom: .25rem;"
+                            class="contacts-block__item">
+                            <span><i class="font-icon fas fa-envelope text-theme"></i>
+                                {{view_detail_data.bussiness_email}}</span>
+                        </li>
+
+
+                    </ul>
+                    <div class="text-center mb-4">
+                        <h4 class="mb-1 text-theme"><strong>Profile Stauts:</strong></h4>
+
+                        <div class="badge badge--aqua d-block mb-2">
+                            {{view_detail_data.profile_status}}
+                        </div>
+
+
+                    </div>
+
+                    <div class="text-center">
+                        <h4 class="mb-1 text-theme"><strong>Location</strong></h4>
+
+                        <p> {{view_detail_data.bussiness_loc}}</p>
+                    </div>
+
+                    <!-- <div class="box-inner">
+                        <table class="table table-sm table-bordered mb-0">
+                            <tr class="thhead">
+                                <th style="color:#fff">S.No </th>
+                                <th style="color:#fff">Certificate</th>
+                            </tr>
+                            <tr class="tdrow">
+                                <ng-container *ngFor="let certifi of view_detail_data.certifi ; let i=index">
+                                    <td class="act">
+                                        {{i}}
+
+                                    </td>
+                                    <td class="act">
+                                        <i (click)="goToLink1(certifi.certifi)" class="fas fa-file-pdf text-danger"></i>
+
+                                    </td>
+                                </ng-container>
+                            </tr>
+                        </table>
+
+                    </div> -->
+                    <div class="box-inner">
+                        <div class="text-center">
+                            <h4 class="mb-1 text-theme"><strong>User Detail</strong></h4>
+                        </div>
+                        <table class="table table-sm table-bordered mb-0">
+                            <tr class="thhead">
+                                <th style="color:#fff">Name</th>
+                                <th style="color:#fff">Email</th>
+                            </tr>
+                            <tr class="tdrow">
+                                <td class="act">
+                                    {{view_detail_data.user_name}}
+
+                                </td>
+                                <td class="act">
+                                    {{view_detail_data.user_email}}
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+@import "../../../../assets/css/style.css";
+.doc-table .ui-table table {
+    width: 1600px !important;
+}
+:host::ng-deep .ui-table-wrapper{
+overflow-x: scroll;
+}
+
+
+.makeDealbtn{
+    font-size: 11px;
+    
+}
+
+.btn-primary[_ngcontent-ltq-c208] {
+    color: #fff;
+    background-color: #61c27f !important;
+    border-color: #61c27f !important;
+    height: 30px;
+    min-width: 122px !important;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+}

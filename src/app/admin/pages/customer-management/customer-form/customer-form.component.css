@@ -1,0 +1,30 @@
+@import "../../../../../assets/css/style.css";
+.add-icon{
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 27px;
+    padding: 8px 19px;
+    background: #61c27f;
+}
+.spec-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .spec-table td, .spec-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .spec-table tr:nth-child(even){background-color: #f2f2f2;}
+
+  .spec-table tr:hover {background-color: #ddd;}
+
+  .spec-table th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    background-color: #61c27f;
+    color: white;
+  }

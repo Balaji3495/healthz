@@ -1,0 +1,330 @@
+<h4 class="title" *ngIf="type == 'create'">Service Provider Create</h4>
+<h4 class="title" *ngIf="type == 'edit'">Edit Service Provider Details</h4>
+<div class="card-box">
+    <div class="row" style="padding: 0px 0px 23px 10px;">
+        <div class="col-md-6">
+            <h5 class="form-lable">Tittle:</h5>
+            <input type="text" pInputText [(ngModel)]="tittle" placeholder="Doctor TIttle">
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Service Provider Name:</h5>
+            <input type="text" pInputText [(ngModel)]="Name" placeholder="Service Provider Name" >
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Email ID:</h5>
+            <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)"
+                placeholder="Email ID" >
+            <div *ngIf="Email_idError" class="mt-1 error">
+                <div class="text-danger">Valid Email Address Required.</div>
+            </div>
+            <div *ngIf="Validation == false && Email_id == undefined" class="mt-1 error">
+                <div class="text-danger">Valid Email Address Required.</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Phone Number:</h5>
+            <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10" 
+                (keypress)=_keyPress($event)>
+            <div *ngIf="Validation == false && (Phone == undefined || Phone == ''  || Phone.length != 10)"
+                class="mt-1 error">
+                <div class="text-danger">Phone Number is Required.</div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-20" *ngIf="userid == undefined">
+            <button type="button" class="btn btn-primary" (click)="create_1()">Save</button>
+            <button type="button" class="btn btn-primary btn-bg-blue" (click)="cancel()">Cancel</button>
+        </div>
+        <ng-container *ngIf="userid != undefined">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: 15px;">
+                        <h4 class="title">Add Doctor Details</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <h5 class="form-lable" style="font-weight: 600;">Education</h5>
+                    </div>
+                    <div class="col-md-5">
+                        <h5 class="form-lable">Education:</h5>
+                        <input type="text" pInputText [(ngModel)]="Education" placeholder="Education">
+                    </div>
+                    <div class="col-md-5">
+                        <h5 class="form-lable">Year of completion:</h5>
+                        <input type="text" pInputText [(ngModel)]="completion" placeholder="Completion">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <i class="fa fa-plus add-icon" (click)="addcompletion()" aria-hidden="true" pTooltip="Add"></i>
+                    </div>
+
+
+                </div>
+                <table *ngIf="Completionarray.length > 0 " class="spec-table">
+                    <thead>
+                        <th>S.No</th>
+                        <th>Education</th>
+                        <th>Year of completion</th>
+                        <th>Remove</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let arr of Completionarray ; let i= index;">
+                            <td>{{i+1}}</td>
+                            <td>{{arr.education}}</td>
+                            <td>{{arr.year}}</td>
+                            <td><i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                                    (click)="remove_completion(i)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="form-lable" style="font-weight: 600;">Experience</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Company:</h5>
+                        <input type="text" pInputText [(ngModel)]="CName" placeholder="Company Name">
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="form-lable">From:</h5>
+                        <p-calendar [(ngModel)]="f_date" [showIcon]="true" inputId="icon"></p-calendar>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="form-lable">To:</h5>
+                        <p-calendar [(ngModel)]="T_date" [showIcon]="true" inputId="icon"></p-calendar>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <i class="fa fa-plus add-icon" (click)="addExperience()" aria-hidden="true" pTooltip="Add"></i>
+                    </div>
+
+
+                </div>
+                <table *ngIf="Experiencearray.length > 0 " class="spec-table">
+                    <thead>
+                        <th>S.No</th>
+                        <th>Company</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Remove</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let arr of Experiencearray ; let i= index;">
+                            <td>{{i+1}}</td>
+                            <td>{{arr.company}}</td>
+                            <td>{{arr.from}}</td>
+                            <td>{{arr.to}}</td>
+                            <td><i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                                    (click)="remove_Experience(i)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="col-md-6">
+                <h5 class="form-lable">Year of completion :</h5>
+                <p-dropdown [options]="years" [(ngModel)]="completion" placeholder="Select" optionLabel="y" [showClear]="true"></p-dropdown>
+            </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Experience:</h5>
+                <p-dropdown [options]="Exp" [(ngModel)]="Experience" placeholder="Select" optionLabel="y" [showClear]="true"></p-dropdown>
+            </div> -->
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h5 class="form-lable">Specialization:</h5>
+                        <input type="text" pInputText [(ngModel)]="Specialization" placeholder="Specialization">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <i class="fa fa-plus add-icon" (click)="addSpecialization()" aria-hidden="true"
+                            pTooltip="Add"></i>
+                    </div>
+
+
+                </div>
+                <table *ngIf="Specializationarray.length > 0 " class="spec-table">
+                    <thead>
+                        <th>S.No</th>
+                        <th>Specialization</th>
+                        <th>Remove</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let arr of Specializationarray ; let i= index;">
+                            <td>{{i+1}}</td>
+                            <td>{{arr.specialization}}</td>
+                            <td><i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                                    (click)="remove_Specialization(i)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <!-- <div class="col-md-10">
+                        <h5 class="form-lable">Pets handled:</h5>
+                        <input type="text" pInputText [(ngModel)]="handled" placeholder="handled">
+                    </div> -->
+                    <div class="col-md-2 text-right">
+                        <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i>
+                    </div>
+
+
+                </div>
+                <table *ngIf="handledarray.length > 0 " class="spec-table">
+                    <thead>
+                        <th>S.No</th>
+                        <th>handled</th>
+                        <th>Remove</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let arr of handledarray ; let i= index;">
+                            <td>{{i+1}}</td>
+                            <td>{{arr.pet_handled}}</td>
+                            <td><i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                                    (click)="remove_handled(i)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="col-md-6">
+                <h5 class="form-lable">Pets handled:</h5>
+                <input type="text" pInputText [(ngModel)]="handled" placeholder="Pets handled">
+            </div> -->
+            <div class="col-md-6">
+                <h5 class="form-lable">Clinic Name:</h5>
+                <input type="text" pInputText [(ngModel)]="Clinic_Name" placeholder="Clinic Name">
+            </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Clinic Location:</h5>
+                <input type="text" pInputText [(ngModel)]="address" placeholder="Clinic Location">
+                <!-- <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="address"></textarea> -->
+            </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Latitude:</h5>
+                <input type="text" pInputText [(ngModel)]="Latitude" placeholder="Latitude">
+            </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Longitude:</h5>
+                <input type="text" pInputText [(ngModel)]="Longitude" placeholder="Longitude">
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Clinic Image:</h5>
+                        <input type="file" #imgType (change)="fileupload($event,'Clinic')" id="imgfile"
+                            accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
+                        <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+                        <!-- <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;"> -->
+                        <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+                        <table *ngIf="clinic_arr.length > 0 " class="spec-table" style="margin-top: 8px;">
+                            <thead>
+                                <th>S.No</th>
+                                <th>Clinic Image</th>
+                                <th>Remove</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of clinic_arr ; let i= index;">
+                                    <td>{{i+1}}</td>
+                                    <td><img src="{{arr.clinic_pic}}" style="width: 20px;"></td>
+
+                                    <td><i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
+                                            pTooltip="Delete" (click)="remove_clinic_img(i)"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Govt ID proof:</h5>
+                        <input type="file" #imgType (change)="fileupload($event,'Govt')" id="imgfile"
+                            accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
+                        <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+                        <!-- <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;"> -->
+
+                        <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+                        <table *ngIf="govt_arr.length > 0 " class="spec-table" style="margin-top: 8px;">
+                            <thead>
+                                <th>S.No</th>
+                                <th>Govt ID proof</th>
+                                <th>Remove</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of govt_arr ; let i= index;">
+                                    <td>{{i+1}}</td>
+                                    <td><img src="{{arr.govt_id_pic}}" style="width: 20px;"></td>
+
+                                    <td><i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
+                                            pTooltip="Delete" (click)="remove_govt_img(i)"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="form-lable">Photo ID proof:</h5>
+                        <input type="file" #imgType (change)="fileupload($event,'Photo')" id="imgfile"
+                            accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
+                        <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+                        <!-- <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;"> -->
+                        <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+                        <table *ngIf="photo_arr.length > 0 " class="spec-table" style="margin-top: 8px;">
+                            <thead>
+                                <th>S.No</th>
+                                <th>Photo ID proof</th>
+                                <th>Remove</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of photo_arr ; let i= index;">
+                                    <td>{{i+1}}</td>
+                                    <td><img src="{{arr.photo_id_pic}}" style="width: 20px;"></td>
+                                    <td><i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
+                                            pTooltip="Delete" (click)="remove_photo_img(i)"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="form-lable">Certificate:</h5>
+                        <input type="file" #imgType (change)="fileupload($event, 'Certificate')" id="imgfile"
+                            accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
+                        <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+                        <!-- <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;"> -->
+                        <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+                        <table *ngIf="certificate_arr.length > 0 " class="spec-table" style="margin-top: 8px;">
+                            <thead>
+                                <th>S.No</th>
+                                <th>Certificate</th>
+                                <th>Remove</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of certificate_arr ; let i= index;">
+                                    <td>{{i+1}}</td>
+                                    <td><img src="{{arr.certificate_pic}}" style="width: 20px;"></td>
+                                    <td><i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
+                                            pTooltip="Delete" (click)="remove_Certificate_img(i)"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- <div class="col-md-12 mt-20">
+                        <h5 class="form-lable">Clinic Images:</h5>
+                        <input type="file" pInputText [(ngModel)]="value1">
+                        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" multiple="multiple"
+                            accept="image/*" maxFileSize="1000000">
+                            <ng-template pTemplate="content">
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                </ul>
+                            </ng-template>
+                        </p-fileUpload>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-md-12 mt-20">
+                <button type="button" *ngIf="type == 'create'" class="btn btn-primary" (click)="create()">Save</button>
+                <button type="button" *ngIf="type == 'edit'" class="btn btn-primary" (click)="edit()">Update</button>
+
+                <!-- <button type="button" class="btn btn-primary btn-bg-blue" (click)="cancel()">Cancel</button> -->
+            </div>
+        </ng-container>
+
+
+
+
+    </div>
+</div>

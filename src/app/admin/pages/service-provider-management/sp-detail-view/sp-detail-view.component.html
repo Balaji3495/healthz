@@ -1,0 +1,123 @@
+<main class="profileview">
+    <section>
+        <div class="page-header">
+            <div>
+                <h2 class="main-content-title tx-24 mb-1">Service Provider Profile</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">View Details</li>
+                </ol>
+            </div>
+
+            <div class="d-flex">
+                <button class="btn btn-sm btn-secondary " (click)="back()">Back <i
+                        class="fas fa-arrow-right ml-1"></i></button>
+            </div>
+        </div>
+
+
+        <div class="gutter-top container">
+            <div class="row sticky-parent">
+                <!-- Sidebar -->
+                <aside class="col-12 col-md-12 col-xl-3">
+                    <div class="sidebar box shadow pb-0 sticky-column">
+
+                        <div class="avatar avatar--180">
+                            <div class="avatar__box">
+                                <img src="{{view_detail_data.bus_service_gall[0].bus_service_gall}}" class="pro-pic" height="100%" width="100%">
+                            </div>
+                        </div>
+                        <div class="text-center mb-4">
+                            <h3 class="title title--h3 sidebar__user-name text-theme">
+                                {{view_detail_data.bussiness_name}}</h3>
+                        </div>
+
+                        <div class="sidebar__info box-inner box-inner--rounded">
+                            <ul class="contacts-block">
+
+
+                                <li class="contacts-block__item">
+                                    <i class="font-icon fas fa-phone-alt text-theme"></i>
+                                    {{view_detail_data.bus_user_phone}}
+                                </li>
+                                <li class="contacts-block__item">
+                                    <span><i class="font-icon fas fa-envelope text-theme"></i>
+                                        {{view_detail_data.bus_user_email}}</span>
+                                </li>
+
+                            </ul>
+                            <div class="text-center mb-4">
+                                <h4 class="mb-1 text-theme"><strong>Profile Stauts:</strong></h4>
+                                <div class="badge badge--aqua d-block mb-2">{{view_detail_data.profile_status}}</div>
+                            </div>
+
+                            <div class="text-center mb-4">
+                                <h4 class="mb-1 text-theme"><strong>Device type:</strong></h4>
+                                <div class="badge badge--aqua d-block mb-2" style="font-size: 11px;">{{view_detail_data.mobile_type}}</div>
+                            </div>
+
+                            <div class="text-center">
+                                <h4 class="mb-1 text-theme"><strong>Location</strong></h4>
+                                <!-- <h3 class="mb-0"><strong>{{view_detail_data.clinic_name}}</strong></h3> -->
+                                <p> {{view_detail_data.sp_loc}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Content -->
+                <div class="col-12 col-md-12 col-xl-9">
+                    <div class="box shadow pb-0">
+
+                        <!-- About -->
+                        <div class="pb-3">
+                            <h2 class="title--h1 first-title title__separate text-theme">Specialisation</h2>
+                            <ng-container *ngFor="let spe of view_detail_data.bus_spec_list">
+                                <span class="badge badge--green-gradient mr-2 mb-2">{{spe.bus_spec_list}}</span>
+                            </ng-container>
+
+                        </div>
+
+                        <div class="box-2">
+                            <h2 class="title--h1 first-title title__separate text-theme"> Gallery</h2>
+                            <ng-container *ngFor="let item of view_detail_data.bus_service_gall">
+                                <div class="row" style="padding: 10px;">
+                                    <div class="col-3">
+                                        <div class="card">
+                                            <img class="img-fluid" src="{{item.bus_service_gall}}" alt="" style="border-radius: 10px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <!-- What -->
+                        <div class="box-inner">
+                            <h2 class="title--h1 first-title title__separate text-theme">Service List</h2>
+
+                            <ng-container *ngFor="let spe of view_detail_data.bus_service_list">
+                                <span class="badge badge--dark mr-2 mb-2">
+                                    {{spe.bus_service_list}}  - ₹{{spe.amount}} - <i class="fas fa-clock" style="color: #55dcc2;"></i> {{spe.time_slots}}
+                                </span>
+                            </ng-container>
+
+                        </div>
+                        <div class="box-inner">
+                          <h2 class="title--h1 first-title title__separate text-theme">Thumb Image:</h2>
+                          <div class="col-md-7">
+                            <input type="file" class="form-control"  #imgType1 (change)="fileupload($event)"
+                                id="imgFile" accept=".png, .jpg, .jpeg">
+                                <span class="img-size">Image Size Should be 200*200</span>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="imgthumcontainer"><img *ngIf="thumbnail_image != undefined" src="{{thumbnail_image}}"></div>
+                        </div>
+                        <button   class="btn btn-primary" (click)="update()" >Update</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

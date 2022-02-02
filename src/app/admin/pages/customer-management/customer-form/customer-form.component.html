@@ -1,0 +1,80 @@
+<h4 class="title" *ngIf="type == 'create'">Pet Create</h4>
+<h4 class="title" *ngIf="type == 'edit'">Update Pet Details</h4>
+<div class="card-box" *ngIf="breed_array.length > 0 &&  type_array.length > 0">
+    <div class="row" style="padding: 0px 0px 23px 10px;">
+        <div class="col-md-12">
+            <h4 class="form-lable" style="margin-bottom: 20px;">Pet Owner Name: <span style="color: #61c27f;padding-left: 7px;margin-bottom: 20px;"> {{Detail.userdetailsModels[0].first_name}} {{Detail.userdetailsModels[0].last_name}}</span></h4>
+            <!-- <input type="text" pInputText [(ngModel)]="Name" placeholder="Owner Name" disabled> -->
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Pet name:</h5>
+            <input type="text" pInputText [(ngModel)]="Pet_Name" placeholder="Pet name">
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Pet Type:</h5>
+            <p-dropdown [options]="type_array" [(ngModel)]="Pet_Type" placeholder="Select" optionLabel="pet_type_title"
+                [showClear]="true"></p-dropdown>
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Pet Breed:</h5>
+            <p-dropdown [options]="breed_array" [(ngModel)]="Pet_Breed" placeholder="Select" optionLabel="pet_breed"
+                [showClear]="true"></p-dropdown>
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Pet Gender:</h5>
+            <p-dropdown [options]="gender_array" [(ngModel)]="Pet_Gender" placeholder="Select" optionLabel="y"
+                [showClear]="true"></p-dropdown>
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Pet Color:</h5>
+            <input type="text" pInputText [(ngModel)]="Pet_Color" placeholder="Pet Color">
+
+            <!-- <p-dropdown [options]="color_array" [(ngModel)]="Pet_Color" placeholder="Select" optionLabel="y"
+                [showClear]="true"></p-dropdown> -->
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Pet weight:</h5>
+            <input type="text" pInputText [(ngModel)]="Pet_Weight" placeholder="Weight">
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Pet Age:</h5>
+            <input type="text" pInputText [(ngModel)]="Pet_Age" placeholder="Age">
+        </div>
+        <!-- <div class="col-md-6">
+            <h5 class="form-lable">Pet DOB:</h5>
+            <p-calendar [(ngModel)]="dob_date" [showIcon]="true" inputId="icon"></p-calendar>
+        </div> -->
+        <div class="col-md-6">
+            <h5 class="form-lable">Vaccinated:</h5>
+            <p-dropdown [options]="vacinated_array" [(ngModel)]="Vaccinated" placeholder="Select" optionLabel="y"
+                [showClear]="false"></p-dropdown>
+        </div>
+        <!-- <div class="col-md-6">
+            <h5 class="form-lable">Register Pet details:</h5>
+            <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="Details"></textarea>
+        </div> -->
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="form-lable">Last Vaccinated date:</h5>
+                    <p-calendar [(ngModel)]="Vaccinated_date" [showIcon]="true" inputId="icon"></p-calendar>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Pet Photo:</h5>
+                    <input type="file" #imgType (change)="fileupload($event)" id="imgfile"
+                    accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
+                    <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div>
+                    <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-20">
+            <button type="button" class="btn btn-primary"  *ngIf="type == 'create'" (click)="create()">Create</button>
+            <button type="button" class="btn btn-primary"  *ngIf="type == 'edit'" (click)="update()">Update</button>
+            <button type="button" class="btn btn-primary btn-bg-blue" (click)="cancel()">Cancel</button>
+        </div>
+
+    </div>
+</div>

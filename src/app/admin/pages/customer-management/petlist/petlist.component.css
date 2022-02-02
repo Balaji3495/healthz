@@ -1,0 +1,12 @@
+@import "../../../../../assets/css/style.css";
+:host::ng-deep .doc-table .ui-table table {
+    width: 1600px !important;
+}
+:host::ng-deep .ui-table-wrapper{
+overflow-x: scroll;
+}
+.card-box-i img {
+    width: 30px;
+    height: 30px;
+    /* border-radius: 50%; */
+}

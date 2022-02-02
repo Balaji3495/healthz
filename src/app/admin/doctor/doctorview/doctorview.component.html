@@ -1,0 +1,205 @@
+<main class="profileview">
+    <section *ngIf="view_detail == 'Doctor'">
+       
+            <div class="page-header">
+                <div>
+                    <h2 class="main-content-title tx-24 mb-1">Doctor Profile</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">View Details</li>
+                    </ol>
+                </div>
+
+                <div class="d-flex">
+                    <button class="btn btn-sm btn-secondary " (click)="back()"><i
+                        class="fas fa-arrow-left ml-1"></i> Back</button>
+                </div>
+            </div>
+
+
+            <div class="gutter-top container">
+                <div class="row sticky-parent">
+                    <!-- Sidebar -->
+                    <aside class="col-12 col-md-12 col-xl-3">
+                        <div class="sidebar box shadow pb-0 sticky-column">
+
+                        
+                            <div class="avatar avatar--180">
+                                <div class="avatar__box" *ngFor="let item of doctor_details.clinic_pic">
+                                    <img src="{{item.clinic_pic}}" class="pro-pic" height="100%" width="100%">
+                                </div>
+                            </div>
+
+                            <div class="text-center mb-4">
+                                <h3 class="title title--h3 sidebar__user-name text-theme old"
+                                    >
+                                    {{doctor_details.dr_title}}.{{doctor_details.dr_name}}</h3>
+
+                              
+                                <div class="" >
+                                    <ng-container *ngFor="let edu of doctor_details.education_details">
+                                        <div class="badge badge--light d-block mb-2">{{edu.education}}-{{edu.year}}
+                                        </div>
+                                    </ng-container>
+                                </div>
+
+                            
+                            </div>
+
+                            <div class="sidebar__info box-inner box-inner--rounded">
+                                <ul class="contacts-block">
+
+                                    
+                                    <li class="contacts-block__item"
+                                        >
+                                        <i class="font-icon fas fa-phone-alt text-theme"></i>
+                                        {{doctor_details.user_id.user_phone}}
+                                    </li>
+
+                           
+
+                                    <li class="contacts-block__item"
+                                        >
+                                        <span><i class="font-icon fas fa-envelope text-theme"></i>
+                                            {{doctor_details.user_id.user_email}}</span>
+                                    </li>
+                                    
+
+
+                                </ul>
+                                <div class="text-center mb-4">
+                                    <h4 class="mb-1 text-theme"><strong>Profile Stauts:</strong></h4>
+                                    
+                                    <div class="badge badge--aqua d-block mb-2"
+                                       >
+                                        {{doctor_details.profile_status}}</div>
+                                   
+
+
+                                </div>
+
+                                <div class="text-center">
+                                    <h4 class="mb-1 text-theme"><strong>Clinic Name & Location</strong></h4>
+                                   
+                                    <h3 class="mb-0"
+                                        >
+                                        <strong>{{doctor_details.clinic_name}}</strong>
+                                    </h3>
+                                    <p >
+                                        {{doctor_details.clinic_loc}}</p>
+                                   
+                                </div>
+
+
+                                <div class="text-center">
+                                    
+                                    <h4 
+                                        class="mb-1 text-theme"><strong>RS {{doctor_details.consultancy_fees}}
+                                            /-</strong>
+                                    </h4>
+                                    
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Content -->
+                    <div class="col-12 col-md-12 col-xl-9">
+                        <div class="box shadow pb-0">
+
+                            <!-- About -->
+                            <div class="pb-3">
+                                <h2 class="title--h1 first-title title__separate text-theme">Specialisation</h2>
+                               
+                                <ng-container>
+
+                                    <ng-container *ngFor="let spe of doctor_details.specialization">
+                                        <span
+                                            class="badge badge--green-gradient mr-2 mb-2">{{spe.specialization}}</span>
+
+                                    </ng-container>
+                                </ng-container>
+                            
+                            </div>
+
+                          
+
+                            <!-- experience -->
+                            <div class="box-inner box-inner--white">
+                                <h2 class="title--h1 first-title title__separate text-theme">Experience</h2>
+                               
+                                <ng-container >
+
+                                    <div class="resume">
+                                        <div class="resume_item resume_work">
+
+                                            <ul>
+                                                <ng-container *ngFor="let exp of doctor_details.experience_details">
+                                                    <li>
+                                                        <div class="date">({{exp.from}}-{{exp.to}})</div>
+                                                        <h3>{{exp.company}}</h3>
+                                                    </li>
+                                                </ng-container>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </ng-container>
+                               
+                            </div>
+
+                            <div class="box-inner">
+                                <table class="table table-sm table-bordered mb-0">
+                                    <tr class="thhead">
+
+                                        <th style="color:#fff">Certificate</th>
+                                        <th style="color:#fff">Govt ID proof </th>
+                                        <th style="color:#fff">Photo ID proof</th>
+                                    </tr>
+                                    <tr class="tdrow">
+                                        <td class="act">
+                                            <ng-container *ngFor="let govt_id_pic of doctor_details.certificate_pic">
+                                                <i (click)="goToLink1(govt_id_pic.certificate_pic)"
+                                                    class="fas fa-file-pdf text-danger"></i>
+                                            </ng-container>
+                                        </td>
+                                        <td class="act">
+                                            <ng-container
+                                                *ngFor="let certificate_pic of doctor_details.govt_id_pic">
+                                                <i (click)="goToLink1(certificate_pic.govt_id_pic)"
+                                                    class="fas fa-file-pdf text-danger"></i>
+                                            </ng-container>
+                                        </td>
+                                        <td class="act">
+                                            <ng-container *ngFor="let photo_id_pic of doctor_details.photo_id_pic">
+                                                <i (click)="goToLink1(photo_id_pic.photo_id_pic)"
+                                                    class="fas fa-file-pdf text-danger"></i>
+                                            </ng-container>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="box-inner box-inner--white box-inner--rounded">
+                                <div class="row" *ngIf="this.view_detail != 'liveDoctor'">
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-primary"
+                                            *ngIf="view_detail_data.profile_verification_status != 'Verified' "
+                                            (click)="verify('Verified',view_detail_data._id)"><i
+                                                class="fas fa-user-check"></i> Approve</button>
+                                        <button type="button" class="btn btn-danger"
+                                            *ngIf="view_detail_data.profile_verification_status == 'Verified' "
+                                            (click)="verify('Not verified',view_detail_data._id)"><i
+                                                class="fas fa-user-slash"></i> Reject</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</main>
+

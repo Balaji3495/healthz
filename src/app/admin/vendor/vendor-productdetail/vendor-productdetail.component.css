@@ -1,0 +1,20 @@
+@import "../../../../assets/css/style.css";
+.doc-table .ui-table table {
+    width: 1600px !important;
+}
+:host::ng-deep .ui-table-wrapper{
+overflow-x: scroll;
+}
+
+
+:host::ng-deep .doc-table .ui-table table {
+    width:1900px !important;
+}
+:host::ng-deep .ui-table-wrapper{
+overflow-x: scroll;
+}
+
+.makeDealbtn{
+    font-size: 11px;
+    
+}

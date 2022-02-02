@@ -1,0 +1,248 @@
+
+<section>
+    <div class="page-header">
+        <div>
+            <h2 class="main-content-title tx-24 mb-1">Product Management</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Details</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row row-sm">
+    <div class="col-lg-12">
+<div class="card custom-card">
+        <div class="card-body">
+            <div class="card-item">
+
+                <div class="row">
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Vendor:</h5>
+                        <p-dropdown [options]="vendor_list" [(ngModel)]="Vendor" placeholder="Select Vendor" optionLabel="bussiness_name"
+                            [showClear]="true"></p-dropdown>
+
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Category:</h5>
+                        <p-dropdown [options]="Catagories_list" [(ngModel)]="Category" placeholder="Select Category" optionLabel="product_cate" (ngModelChange)="subcate()"
+                            [showClear]="true"></p-dropdown>
+
+                    </div>
+
+                    <!-- <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Pet Type:</h5>
+                            <p-multiSelect [options]="pet_type_list" [(ngModel)]="pettype" defaultLabel="Select"
+                            optionLabel="pet_type_title"></p-multiSelect>
+
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Pet Breed:</h5>
+                            <p-multiSelect [options]="pet_breed_list" [(ngModel)]="petBreed" defaultLabel="Select"
+                            optionLabel="pet_breed"></p-multiSelect>
+
+                    </div> -->
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Age:</h5>
+                        <p-multiSelect [options]="Ages" [(ngModel)]="Age" defaultLabel="Select"
+                            optionLabel="y"></p-multiSelect>
+
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Product Name:</h5>
+                        <input type="text" pInputText [(ngModel)]="Product_Name" placeholder="Enter Product Name" maxlength = "25">
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <h5 class="form-lable">Product Code:</h5>
+                        <input type="text" pInputText [(ngModel)]="product_code" placeholder="Enter Product Code">
+                    </div> -->
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Cost:</h5>
+                        <input type="text" pInputText [(ngModel)]="Cost" placeholder="Cost">
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Discount:</h5>
+                        <input type="text" pInputText [(ngModel)]="Discount" placeholder="Discount %">
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Threshould:</h5>
+                        <input type="text" pInputText [(ngModel)]="threshould" placeholder="Threshould">
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <h5 class="form-lable">Count:</h5>
+                        <input type="text" pInputText [(ngModel)]="Count" placeholder="Count">
+                    </div> -->
+                    <div class="col-md-12">
+                        <h5 class="form-lable">Description:</h5>
+                        <textarea pInputTextarea [(ngModel)]="Description" rows="5" cols="50"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="form-lable">Product image:</h5>
+
+                        <div class="form-group row">
+                           <div class="col-md-7">
+                                <input type="file" class="form-control"  #imgType1 (change)="fileupload($event)"
+                                    id="imgFile" accept=".png, .jpg, .jpeg">
+                                    <span class="img-size">Image Size Should be 200*200</span>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="imgthumcontainer"><img *ngIf="img_path != undefined" src="{{img_path}}"></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="">
+                                    <button (click)="addimg()" class="btn btn-sm btn-primary"><i
+                                            class="fa fa-plus"></i> Add Image</button>
+                                </div>
+                            </div>
+                            <div class="col-md-12" *ngIf="Thmp_list.length > 0">
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">Image</th>
+                                            <th style="text-align: center;">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let dynamic of Thmp_list; let i = index;">
+                                            <td style="text-align: center;"><div class="imgthumcontainer" style="width: 30px; height:30px;display: inline-block;"><img src="{{dynamic}}" ></div></td>
+                                            <td style="text-align: center;"> <button (click)="deleteimg(dynamic,i)"
+                                                    class="btn btn-sm btn-danger">Delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- <input type="file" pInputText [(ngModel)]="value1"> -->
+                        <!-- <p-fileUpload name="demo[]" url="http://52.25.163.13:3000/upload" (onUpload)="onUpload($event)" multiple="multiple"
+                            accept="image/*" maxFileSize="1000000">
+                            <ng-template pTemplate="content">
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                </ul>
+                            </ng-template>
+                        </p-fileUpload> -->
+                    </div>
+
+                    <div class="col-md-6">
+                      <h5 class="form-lable">thumbnail Image:</h5>
+
+                      <div class="form-group row">
+                         <div class="col-md-7">
+                              <input type="file" class="form-control"  #imgType2 (change)="fileupload2($event)"
+                                  id="imgFile" accept=".png, .jpg, .jpeg">
+                                  <span class="img-size">Image Size Should be 200*200</span>
+                          </div>
+                          <div class="col-md-2">
+                              <div class="imgthumcontainer"><img *ngIf="thumbnail_image != undefined" src="{{thumbnail_image}}"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                    <div class="col-md-12">
+                        <button type="button" *ngIf="edit_t == false" class="btn btn-primary" (click)="create()"><i class="fas fa-plus-circle"></i> Add</button>
+                        <button *ngIf="edit_t == true" type="button" class="btn btn-primary" (click)="update()"><i class="fas fa-edit"></i> Update</button>
+                        <button *ngIf="edit_t == true" type="button" class="btn btn-danger " (click)="cancel()">
+                            Cancel</button> </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+    </div>
+
+    <div class="row row-sm">
+
+        <div class="col-lg-12">
+<div class="card custom-card">
+        <div class="card-body">
+            <div class="card-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="search-hero">
+                            <div class="input-group mb-3">
+                               <div class="input-group-prepend">
+                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                               </div>
+                               <input class="form-control" type="text" name="search2"
+                           [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                             </div>
+                          </div>
+                    </div>
+                    <div class="col-md-7 text-center">
+                        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
+                        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
+                        <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                </div>
+
+                <!-- search -->
+
+    <div class="doc-table">
+    <p-table [value]="list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+    [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+    <ng-template pTemplate="header">
+        <tr class="thhead">
+            <th class="th-1">
+                S.No
+            </th>
+            <th pSortableColumn="code">
+                Product Image <p-sortIcon field="code"></p-sortIcon>
+            </th>
+            <th pSortableColumn="code">
+                Product Name <p-sortIcon field="code"></p-sortIcon>
+            </th>
+            <th pSortableColumn="code">
+                Category <p-sortIcon field="code"></p-sortIcon>
+            </th>
+            <th>Device type</th>
+            <th>Today's Deal</th>
+            <th>Created at</th>
+            <th>Modified at</th>
+            <th style="width: 163px;text-align:center">
+                Action
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item let-i="rowIndex">
+        <tr class="tdrow">
+            <td>{{i+1}}</td>
+            <td>
+                <div class="imgthumcontainer"><img src="{{item.product_img[0]}}"></div></td>
+            <td>{{item.product_name}}</td>
+            <td>{{item.cat_id.product_cate}}</td>
+            <td>
+                Admin
+            </td>
+            <td>
+                <button class="btn btn-sm btn-success makeDealbtn" *ngIf="item.today_deal === false" (click)="makeTDeal(item._id, true)">Make Today's Deal</button>
+                <button class="btn btn-sm btn-danger makeDealbtn" *ngIf="item.today_deal === true" (click)="makeTDeal(item._id, false)">Cancel Today's Deal</button>
+            </td>
+            <td>
+                {{item.createdAt | date}}
+            </td>
+            <td>
+                {{item.updatedAt | date}}
+            </td>
+            <td class="act">
+                <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"
+                (click)="edit(item)"></i>
+            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                (click)="delete(item._id)"></i>
+             </td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
+
+            </div>
+        </div>
+    </div>
+ </div>
+    </div>
+
+
+</section>

@@ -1,0 +1,7 @@
+@import "../../../../assets/css/style.css";
+:host::ng-deep .ven-table .ui-table table {
+    width: 1600px !important;
+}
+:host::ng-deep .ui-table-wrapper{
+overflow-x: scroll;
+}

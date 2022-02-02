@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div class="card" style="background-color: aliceblue;">
+        <div class="row" style="text-align: center; margin: 10px;">
+            <div class="col-12">
+                <h2><b>PET SERVICE APPOINTMENT</b></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img style="margin: 5px; border-radius:10px;" class="img-fluid" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="">
+                    </div>
+                </div>
+                <div class="row" style="margin: 5px;">
+                    <div class="col-md-12 d-flex justify-content-start">
+                        <p style="font-size: 16px;"><b>Appointment ID: </b> <span style="font-size: 12px;">{{petServiceDetails.appointment_UID}}</span></p>
+                        <hr>
+                        <p style="font-size: 16px;"><b>Appointment Status: </b> <span class="badge badge-success" style="font-size: 12px;">{{petServiceDetails.appoinment_status}}</span></p>
+                    </div>
+
+                    <div class="col-md-12 d-flex justify-content-start">
+                        <p style="font-size: 14px;"><b>Booking Date: </b> <span style="font-size: 12px;"> <i class="fas fa-calendar-week"></i> {{petServiceDetails.booking_date}}</span></p>
+                        <hr>
+                        <p style="font-size: 14px;"><b>Booking Time: </b> <span style="font-size: 12px;"> <i class="far fa-clock"></i> {{petServiceDetails.booking_time}}</span></p>
+
+                    </div>
+                    <hr>
+                    <div class="col-md-12 d-flex justify-content-start">
+                        <p style="font-size: 14px;"><b>Service Name: </b> <span style="font-size: 12px;">{{petServiceDetails.service_name}}</span></p>
+                        <hr>
+                        <p style="font-size: 14px;"><b>Service Time: </b> <span style="font-size: 12px;"> <i class="far fa-clock"></i> {{petServiceDetails.service_time}}</span></p>
+                        <hr>
+                        <p style="font-size: 14px;"><b>Service Amount: </b> <span style="font-size: 12px;"> ₹{{petServiceDetails.service_amount}}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <div class="col-2">
+                        <img style="margin: 5px; border-radius:10px;" class="img-fluid" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="">
+                    </div>
+                    <hr>
+                    <div class="col-md-10 col-sm-12 col-lg-10">
+
+                        <p style="font-size: 16px;"><b>Client name: </b> <span style="font-size: 14px;">{{petServiceDetails.user_id.first_name | titlecase}}&nbsp;{{petServiceDetails.user_id.last_name | titlecase}}</span></p>
+                        <hr>
+                        <p style="font-size: 16px;"><b>Customer Email: </b> <span style="font-size: 14px;">{{petServiceDetails.user_id.user_email}}</span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <img style="margin: 5px; border-radius:10px;" class="img-fluid" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="">
+                    </div>
+
+                    <hr>
+                    <div class="col-md-10 col-sm-12 col-lg-10">
+
+                        <p style="font-size: 16px;"><b>PET Breed: </b> <span style="font-size: 14px;">{{petServiceDetails.pet_id.pet_breed}}</span></p>
+                        <hr>
+                        <p style="font-size: 16px;"><b>PET Name: </b> <span style="font-size: 14px;">{{petServiceDetails.pet_id.pet_name}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
