@@ -66,3 +66,16 @@
 // .logo:hover {
 //   background: url("../../../assets/img/brand/logo2.png") no-repeat;
 // } */
+.toggle {
+  background: none;
+  border: none;
+  color: #337ab7;
+  /*display: none;*/
+  /*font-size: .9em;*/
+  font-weight: 600;
+  /*padding: .5em;*/
+  position: absolute;
+  right: .75em;
+  top: .75em;
+  z-index: 9;
+}
