@@ -31,10 +31,10 @@
                                   <form class="my-form forms-sample ng-untouched ng-pristine ng-valid">
                                       <div class="form-group">
                                           <label><strong>Email Address</strong></label>
-                                          <input [(ngModel)]="email_id" class="form-control" style="height:30px; font-size:12px;"
+                                          <input  [(ngModel)]="email_id" class="form-control" style="height:30px; font-size:12px;"
                                               placeholder="Email Address" type="email" name="email_id"
                                               (ngModelChange)="emailChange($event)"
-                                              [ngModelOptions]="{standalone: true}">
+                                              [ngModelOptions]="{standalone: true}" #user>
                                           <div *ngIf="emailError">
                                               <div class="text-danger">{{emailErrorMsg}}</div>
                                           </div>
@@ -45,6 +45,15 @@
                                               [(ngModel)]="passwords" name="passwords"
                                               (ngModelChange)="passwordChange($event)"
                                               [ngModelOptions]="{standalone: true}">
+                                               <!-- <button type="button" id="btnToggle" class="toggle" (click)="toogle()"> -->
+                                                   <!-- <span *ngIf="show"class="material-icons">
+                          visibility
+                          </span>
+                          <span *ngIf="!show" class="material-icons">
+                            visibility-off
+                            </span> -->
+                        
+                        <!-- </button> -->
                                           <div *ngIf="passwordError">
                                               <div class="text-danger">{{passwordErrorMsg}}</div>
                                           </div>
