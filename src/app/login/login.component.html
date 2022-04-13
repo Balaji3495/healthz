@@ -44,6 +44,7 @@
                                           <input class="form-control" placeholder="Password" type="password" style="height:30px; font-size:12px;"
                                               [(ngModel)]="passwords" name="passwords"
                                               (ngModelChange)="passwordChange($event)"
+                                              (focus)="focusPassword()"
                                               [ngModelOptions]="{standalone: true}">
                                                <!-- <button type="button" id="btnToggle" class="toggle" (click)="toogle()"> -->
                                                    <!-- <span *ngIf="show"class="material-icons">

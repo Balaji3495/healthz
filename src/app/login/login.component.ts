@@ -85,15 +85,20 @@ show:boolean;
   }
 
   emailChange(data) {
+  
     //console.log(data);
     this.email = data;
-    this.emailValidator();
+    // this.emailValidator();
   }
 
   passwordChange(data) {
     //console.log(data);
     this.password = data;
     this.passwordValidator();
+  
+  }
+  focusPassword(){
+    this.emailValidator();
   }
 
   validator() {
