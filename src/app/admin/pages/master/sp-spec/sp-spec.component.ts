@@ -43,7 +43,13 @@ export class SpSpecComponent implements OnInit {
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
     private dialog: MatDialog
-  ) { }
+  ) { 
+    // login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
+  }
 
   ngOnInit(): void {
 
@@ -53,7 +59,13 @@ export class SpSpecComponent implements OnInit {
     this.update_button = true;
     this.listpettype();
   }
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
 
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
 
   openDialogWithRef(ref: TemplateRef<any>) {
     this.dialog.open(ref);

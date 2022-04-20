@@ -93,12 +93,14 @@ import { DoctorappointmentviewComponent } from './doctor/doctor/doctorappointmen
 import { ServicebannerComponent } from './pages/master/servicebanner/servicebanner.component';
 import { DoctorbannerComponent } from './pages/master/doctorbanner/doctorbanner.component';
 import { DoctorviewComponent } from './doctor/doctorview/doctorview.component';
+import { IsEllipsDirectiveDirective } from '../is-ellips-directive.directive';
 
 
 
 
 @NgModule({
   declarations: [
+    IsEllipsDirectiveDirective,
     AdminHeaderComponent,
     AdminSidebarComponent,
     DashboardComponent,
@@ -203,7 +205,8 @@ import { DoctorviewComponent } from './doctor/doctorview/doctorview.component';
   ],
   exports: [
     AdminHeaderComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
+    IsEllipsDirectiveDirective
   ]
 })
 export class AdminModule { }

@@ -48,7 +48,13 @@ export class DoctorlistComponent implements OnInit {
     private datePipe: DatePipe,
     private excelService: ExcelService,
 
-  ) { }
+  ) {
+    // login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
+   }
   @ViewChild('TABLE') table: ElementRef;
   ngOnInit(): void {
 
@@ -67,7 +73,13 @@ export class DoctorlistComponent implements OnInit {
     );
   }
 
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
 
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
 
   listdoctorsall() {
     this._api.doctor_details_list().subscribe(
@@ -332,13 +344,7 @@ export class DoctorlistComponent implements OnInit {
 
 
 
-  saveInLocal(key, val): void {
-    this.storage.set(key, val);
-  }
-
-  getFromLocal(key): any {
-    return this.storage.get(key);
-  }
+ 
 
   doc_form() {
     this.saveInLocal('fun_type', 'create');

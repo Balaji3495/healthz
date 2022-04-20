@@ -61,7 +61,13 @@ constructor(
     private _api: ApiService,
     private http: HttpClient,
     private datePipe: DatePipe,
-    ){}
+    ){
+// login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
+    }
 
 
 
@@ -71,7 +77,13 @@ constructor(
     this.addition_detail = [];
 
   }
+ saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
 
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
 
   vendorlist() {
     this._api.vendor_details_list().subscribe(

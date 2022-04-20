@@ -36,7 +36,13 @@ export class CustomerManagementComponent implements OnInit {
     private datePipe: DatePipe,
     private excelService: ExcelService,
 
-  ) { }
+  ) {
+    // login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
+   }
   @ViewChild('TABLE') table: ElementRef;
   ngOnInit(): void {
     this.rows = [{ type: "Dog", name: "dog1" },
@@ -55,7 +61,7 @@ export class CustomerManagementComponent implements OnInit {
 
 
   }
-
+ 
 
   list() {
     this._api.user_list().subscribe(

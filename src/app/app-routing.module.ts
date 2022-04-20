@@ -6,6 +6,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { ServiceProviderComponent } from './service-provider/service-provider.component';
+import { AuthguardGuard } from './provider/auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login', },
@@ -13,6 +14,7 @@ const routes: Routes = [
 
   {
     path: 'admin', component: AdminComponent,
+     canActivate: [AuthguardGuard],
     children: [
       {
         path: '',

@@ -69,6 +69,11 @@ export class ProductManagementComponent implements OnInit {
     private http: HttpClient,
     private datePipe: DatePipe,
     ){
+      // login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
    }
 
   ngOnInit(): void {
@@ -79,6 +84,13 @@ export class ProductManagementComponent implements OnInit {
     this.listpetbreed();
     this.sub_cat_list();
     // this.subcatagorieslist();
+  }
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
+
+  getFromLocal(key): any {
+    return this.storage.get(key);
   }
   listpettype() {
     console.log("list");

@@ -31,12 +31,19 @@ export class VendorManagementComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
-  ) { }
+  ) { 
+    // login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
+  }
 
   ngOnInit(): void {
     this.listpettype();
 
   }
+  
   listpettype() {
     this._api.vendor_details_list1().subscribe(
       (response: any) => {

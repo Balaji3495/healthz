@@ -42,7 +42,13 @@ export class MinibannerComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
-  ) { }
+  ) { 
+// login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
+  }
 
   ngOnInit(): void {
 
@@ -55,7 +61,13 @@ export class MinibannerComponent implements OnInit {
     this.listhomebanner();
   }
 
+ saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
 
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
 
   listhomebanner() {
     this._api.mini_banner_list().subscribe(

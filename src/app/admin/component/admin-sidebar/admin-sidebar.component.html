@@ -30,8 +30,10 @@
               <div class="sub-menu">
 
                   <mat-list-item routerLinkActive="active" (click)="expand2 = !expand2">
-                      <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right" aria-hidden="true"
-                              ></i></mat-icon>
+                      <mat-icon  mat-list-icon>
+                          <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> -->
+                          <img class="sidebar-icon" src="../../assets/images/sidebar-menu/master.png" alt="">  
+                        </mat-icon>
                       <div fxFlex="10"></div>
                       <div class="sidenav-item">
                           <h5 class="lead">Master</h5>
@@ -44,9 +46,9 @@
                   <mat-nav-list style="background: #4d9d67;" *ngIf="expand2">
                       <div class="sub-menu">
                           <mat-list-item style="padding-left: 5px;" routerLink="user_type" routerLinkActive="active">
-                              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                      aria-hidden="true"
-                                      ></i>
+                              <mat-icon  mat-list-icon>
+                                  <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> -->
+                                  <img class="sidebar-icon" src="../../assets/images/sidebar-menu/user-type-managment.png" alt="">
                               </mat-icon>
                               <div fxFlex="10"></div>
                               <div class="sidenav-item">
@@ -64,9 +66,9 @@
                               </div>
                           </mat-list-item>
                           <mat-list-item style="padding-left: 5px;" routerLink="healthissue" routerLinkActive="active">
-                            <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                    aria-hidden="true"
-                                    ></i>
+                            <mat-icon  mat-list-icon>
+                                <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> -->
+                                <img class="sidebar-icon" src="../../assets/images/sidebar-menu/health-issue.png" alt="">
                             </mat-icon>
                             <div fxFlex="10"></div>
                             <div class="sidenav-item">
@@ -75,9 +77,9 @@
                         </mat-list-item>
                           <mat-list-item style="padding-left: 5px;" routerLink="doc_specialization"
                               routerLinkActive="active">
-                              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                      aria-hidden="true"
-                                      ></i>
+                              <mat-icon  mat-list-icon>
+                                  <!-- <i class="fas fa-arrow-circle-right"aria-hidden="true"></i> -->
+                                  <img class="sidebar-icon" src="../../assets/images/sidebar-menu/doctor specialaization.png" alt="">
                               </mat-icon>
                               <div fxFlex="10"></div>
                               <div class="sidenav-item">
@@ -86,9 +88,9 @@
                           </mat-list-item>
                           <mat-list-item style="padding-left: 5px;" routerLink="master/sp/specialization"
                           routerLinkActive="active">
-                          <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                  aria-hidden="true"
-                                  ></i>
+                          <mat-icon  mat-list-icon>
+                            <img class="sidebar-icon" src="../../assets/images/sidebar-menu/service-specialization.png" alt="">
+                            <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true" ></i> -->
                           </mat-icon>
                           <div fxFlex="10"></div>
                           <div class="sidenav-item">
@@ -130,9 +132,9 @@
 
                           <mat-list-item style="padding-left: 5px;" routerLink="master/banner/homebanner"
                               routerLinkActive="active">
-                              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                      aria-hidden="true"
-                                      ></i>
+                              <mat-icon  mat-list-icon>
+                                <img class="sidebar-icon" src="../../assets/images/sidebar-menu/home-page-banner.png" alt="">  
+                                <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> -->
                               </mat-icon>
                               <div fxFlex="10"></div>
                               <div class="sidenav-item">
@@ -142,9 +144,9 @@
 
                           <mat-list-item style="padding-left: 5px;" routerLink="master/banner/servicebanner"
                               routerLinkActive="active">
-                              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                      aria-hidden="true"
-                                      ></i>
+                              <mat-icon  mat-list-icon>
+                                  <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> -->
+                                  <img class="sidebar-icon" src="../../assets/images/sidebar-menu/service-banner.png" alt="">
                               </mat-icon>
                               <div fxFlex="10"></div>
                               <div class="sidenav-item">
@@ -155,9 +157,9 @@
 
                           <mat-list-item style="padding-left: 5px;" routerLink="master/banner/doctorbanner"
                               routerLinkActive="active">
-                              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                      aria-hidden="true"
-                                      ></i>
+                              <mat-icon  mat-list-icon>
+                                  <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> -->
+                                  <img class="sidebar-icon" src="../../assets/images/sidebar-menu/doctor-banner.png" alt="">
                               </mat-icon>
                               <div fxFlex="10"></div>
                               <div class="sidenav-item">
@@ -167,9 +169,9 @@
 
                           <mat-list-item style="padding-left: 5px;" routerLink="master/banner/minibanner"
                               routerLinkActive="active">
-                              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                      aria-hidden="true"
-                                      ></i>
+                              <mat-icon  mat-list-icon>
+                                <img class="sidebar-icon" src="../../assets/images/sidebar-menu/mini-banner.png" alt="">
+                                <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> -->
                               </mat-icon>
                               <div fxFlex="10"></div>
                               <div class="sidenav-item">
@@ -181,7 +183,9 @@
 
                           <mat-list-item style="padding-left: 5px;" routerLink="master/banner/ecombanner"
                               routerLinkActive="active">
-                              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right" aria-hidden="true" ></i>
+                              <mat-icon  mat-list-icon>
+                                  <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true" ></i> -->
+                                  <img class="sidebar-icon" src="../../assets/images/sidebar-menu/e-commerace-banner.png" alt="">
                               </mat-icon>
                               <div fxFlex="10"></div>
                               <div class="sidenav-item">
@@ -192,9 +196,9 @@
 
                           <mat-list-item style="padding-left: 5px;" routerLink="master/banner/splashscreen"
                               routerLinkActive="active">
-                              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                      aria-hidden="true"
-                                      ></i>
+                              <mat-icon  mat-list-icon>
+                                  <!-- <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> -->
+                                  <img class="sidebar-icon" src="../../assets/images/sidebar-menu/splash-screen-banner.png" alt="">
                               </mat-icon>
                               <div fxFlex="10"></div>
                               <div class="sidenav-item">
@@ -204,8 +208,9 @@
 
                           <mat-list-item style="padding-left: 5px;" routerLink="Diagnosis"
                           routerLinkActive="active">
-                          <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"></i>
-
+                          <mat-icon  mat-list-icon>
+                              <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                              <img class="sidebar-icon" src="../../assets/images/sidebar-menu/diagnosis.png" alt="">
                           </mat-icon>
                           <div fxFlex="10"></div>
                           <div class="sidenav-item">
@@ -216,8 +221,9 @@
 
                       <mat-list-item style="padding-left: 5px;" routerLink="Sub_diagnosis"
                       routerLinkActive="active">
-                      <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"></i>
-
+                      <mat-icon  mat-list-icon>
+                          <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                          <img class="sidebar-icon" src="../../assets/images/sidebar-menu/sub-diagnosis.png" alt="">
                       </mat-icon>
                       <div fxFlex="10"></div>
                       <div class="sidenav-item">
@@ -228,8 +234,9 @@
 
                   <mat-list-item style="padding-left: 5px;" routerLink="Category_Management"
                   routerLinkActive="active">
-                  <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"></i>
-
+                  <mat-icon  mat-list-icon>
+                      <!-- <i class="fas fa-arrow-circle-right"></i> -->
+<img class="sidebar-icon" src="../../assets/images/sidebar-menu/category.png" alt="">
                   </mat-icon>
                   <div fxFlex="10"></div>
                   <div class="sidenav-item">
@@ -240,7 +247,9 @@
 
                   <mat-list-item style="padding-left: 5px;" routerLink="Service_Type"
                   routerLinkActive="active">
-                  <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"></i>
+                  <mat-icon  mat-list-icon>
+                      <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                      <img class="sidebar-icon" src="../../assets/images/sidebar-menu/service-type.png" alt="">
 
                   </mat-icon>
                   <div fxFlex="10"></div>
@@ -278,9 +287,10 @@
 
 
                <mat-list-item routerLinkActive="active" (click)="expand12 = !expand12">
-                <mat-icon  mat-list-icon><i class="fa fa-users"
-                        aria-hidden="true"
-                        ></i></mat-icon>
+                <mat-icon  mat-list-icon>
+                    <!-- <i class="fa fa-users" aria-hidden="true" ></i> -->
+                    <img class="sidebar-icon" src="../../assets/images/sidebar-menu/health-z-partners.png" alt="">
+                </mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">HealthZ Partners</h5>
@@ -294,9 +304,9 @@
                     <div class="sub-menu">
                       <mat-list-item style="padding-left: 5px;" routerLink="doctor/doctor_list"
                           routerLinkActive="active">
-                          <mat-icon  mat-list-icon><i class="fas fa-user-md"
-                                  aria-hidden="true"
-                                  ></i>
+                          <mat-icon  mat-list-icon>
+                            <img class="sidebar-icon" src="../../assets/images/sidebar-menu/doctor.png" alt="">
+                            <!-- <i class="fas fa-user-md" aria-hidden="true" ></i> -->
                           </mat-icon>
                           <div fxFlex="10"></div>
                           <div class="sidenav-item">
@@ -306,11 +316,11 @@
 
                       <mat-list-item style="padding-left: 5px;" routerLink="Vendor_Management"
                       routerLinkActive="active">
-                      <mat-icon  mat-list-icon><i class="fas fa-shopping-bag"
-                              aria-hidden="true"
-                              ></i>
-
-                              <!-- <i class="fas fa-shopping-bag"></i> -->
+                      <mat-icon  mat-list-icon>
+                         
+                              <img class="sidebar-icon" src="../../assets/images/sidebar-menu/vendor.png" alt="">
+                              <!--  <i class="fas fa-shopping-bag" aria-hidden="true" ></i>
+                                  <i class="fas fa-shopping-bag"></i> -->
                       </mat-icon>
                       <div fxFlex="10"></div>
                       <div class="sidenav-item">
@@ -320,9 +330,9 @@
 
                   <mat-list-item style="padding-left: 5px;" routerLink="serviceprovider_details"
                   routerLinkActive="active">
-                  <mat-icon  mat-list-icon><i class="fas fa-user-tie"
-                          aria-hidden="true"
-                          ></i>
+                  <mat-icon  mat-list-icon>
+                      <!-- <i class="fas fa-user-tie" aria-hidden="true"></i> -->
+                      <img class="sidebar-icon" src="../../assets/images/sidebar-menu/service-provider.png" alt="">
                   </mat-icon>
                   <div fxFlex="10"></div>
                   <div class="sidenav-item">
@@ -337,9 +347,10 @@
 
 
           <mat-list-item routerLinkActive="active" (click)="expand4 = !expand4">
-            <mat-icon  mat-list-icon><i class="fa fa-users"
-                    aria-hidden="true"
-                    ></i></mat-icon>
+            <mat-icon  mat-list-icon>
+                <!-- <i class="fa fa-users" aria-hidden="true" ></i> -->
+                <img class="sidebar-icon" src="../../assets/images/sidebar-menu/product-management.png" alt="">
+            </mat-icon>
             <div fxFlex="10"></div>
             <div class="sidenav-item">
                 <h5 class="lead">Product Management</h5>
@@ -353,9 +364,9 @@
                 <div class="sub-menu">
                   <mat-list-item style="padding-left: 5px;" routerLink="vendor/vendor_add_productdetail"
                       routerLinkActive="active">
-                      <mat-icon  mat-list-icon><i class="fas fa-user-md"
-                              aria-hidden="true"
-                              ></i>
+                      <mat-icon  mat-list-icon>
+                          <!-- <i class="fas fa-user-md" aria-hidden="true" ></i> -->
+                          <img class="sidebar-icon" src="../../assets/images/sidebar-menu/add-product.png" alt="">
                       </mat-icon>
                       <div fxFlex="10"></div>
                       <div class="sidenav-item">
@@ -365,8 +376,10 @@
 
                   <mat-list-item style="padding-left: 5px;" routerLink="vendor/vendor_productdetail"
                   routerLinkActive="active">
-                  <mat-icon  mat-list-icon><i class="fas fa-shopping-bag"
-                          aria-hidden="true"></i>                  </mat-icon>
+                  <mat-icon  mat-list-icon>
+                      <!-- <i class="fas fa-shopping-bag" aria-hidden="true"></i>      -->
+                      <img class="sidebar-icon" src="../../assets/images/sidebar-menu/product-details.png" alt="">
+                                 </mat-icon>
                   <div fxFlex="10"></div>
                   <div class="sidenav-item">
                       <h5 class="lead">Product Details</h5>
@@ -387,8 +400,10 @@
 
 
               <mat-list-item routerLinkActive="active" (click)="expand3 = !expand3">
-                <mat-icon  mat-list-icon><i class="fas fa-calendar" aria-hidden="true"
-                        ></i></mat-icon>
+                <mat-icon  mat-list-icon>
+                    <!-- <i class="fas fa-calendar" aria-hidden="true"></i> -->
+                    <img class="sidebar-icon" src="../../assets/images/sidebar-menu/appointments.png" alt="">  
+                </mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Appointments</h5>
@@ -404,9 +419,9 @@
               <div class="sub-menu">
                   <mat-list-item style="padding-left: 5px;" routerLink="doctor_appointment"
                       routerLinkActive="active">
-                      <mat-icon  mat-list-icon><i class="fas fa-user-nurse"
-                              aria-hidden="true"
-                              ></i>
+                      <mat-icon  mat-list-icon>
+                        <img class="sidebar-icon" src="../../assets/images/sidebar-menu/doctor-appointments.png" alt="">  
+                          <!-- <i class="fas fa-user-nurse" aria-hidden="true" ></i> -->
                       </mat-icon>
                       <div fxFlex="10"></div>
                       <div class="sidenav-item">
@@ -414,9 +429,10 @@
                       </div>
                   </mat-list-item>
                   <mat-list-item routerLink="Service_appointment" routerLinkActive="active">
-                      <mat-icon  mat-list-icon><i class="fas fa-dog"
-                              aria-hidden="true"
-                              ></i></mat-icon>
+                      <mat-icon  mat-list-icon>
+                        <img class="sidebar-icon" src="../../assets/images/sidebar-menu/service-appointments.png" alt=""> 
+                          <!-- <i class="fas fa-dog" aria-hidden="true" ></i> -->
+                    </mat-icon>
                       <div fxFlex="10"></div>
                       <div class="sidenav-item">
                           <h5 class="lead">Diagostics Service</h5>

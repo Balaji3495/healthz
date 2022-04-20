@@ -27,3 +27,20 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helve
   background-color: #3c93c1 !important;
   border-color: #3c93c1 !important;
 }
+.sidebar-icon
+{
+  height: 18px;
+    width: 18px;
+}
+body .ui-paginator .ui-paginator-first, body .ui-paginator .ui-paginator-prev, body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
+  height: 2.49em !important;
+}
+.ui-paginator .ui-paginator-first {
+  border-right: 0 !important;
+}
+body .ui-table .ui-table-tbody > tr > td {
+  padding: 0em 0.857em !important;
+}
+.pendinguser .ui-table-wrapper.ng-star-inserted {
+  min-height: 234px !important;
+}

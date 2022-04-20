@@ -6,3 +6,8 @@
 overflow-x: scroll;
 }
 
+:host::ng-deep .btn-primary {
+ 
+    min-width: 78px !important;
+
+}

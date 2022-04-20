@@ -39,12 +39,24 @@ export class EcombannerComponent implements OnInit {
     private _api: ApiService,
     private http: HttpClient,
     private datePipe: DatePipe,
-  ) { }
+  ) { 
+    // login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
+  }
 
   ngOnInit(): void {
     this.listecomBanner();
   }
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
 
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
   listecomBanner() {
     //console.log("list");
     this._api.ecombanner_list().subscribe(

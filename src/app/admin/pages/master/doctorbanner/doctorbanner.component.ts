@@ -42,7 +42,13 @@ export class DoctorbannerComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
-  ) { }
+  ) {
+    // login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
+   }
 
   ngOnInit(): void {
 
@@ -55,7 +61,13 @@ export class DoctorbannerComponent implements OnInit {
     this.listdoctorbanner();
   }
 
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
 
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
 
   listdoctorbanner() {
     this._api.doctorbanner_list().subscribe(

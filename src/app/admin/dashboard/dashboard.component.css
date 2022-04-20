@@ -21,3 +21,22 @@
 .act i{padding:3px}
 .title-h3{font-size:18px;font-weight:600;color:#61c27f}
 :host::ng-deep .ui-paginator .ui-paginator-current{display:none}
+
+.tdrow td {
+ height: 40px !important;
+
+ /* width: 50px !important; */
+ overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+
+.thhead .the{
+    width: 150px !important;
+    overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
+
+   
+

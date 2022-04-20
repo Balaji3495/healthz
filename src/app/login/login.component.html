@@ -34,6 +34,7 @@
                                           <input  [(ngModel)]="email_id" class="form-control" style="height:30px; font-size:12px;"
                                               placeholder="Email Address" type="email" name="email_id"
                                               (ngModelChange)="emailChange($event)"
+                                              (focus)="focusUser()"
                                               [ngModelOptions]="{standalone: true}" #user>
                                           <div *ngIf="emailError">
                                               <div class="text-danger">{{emailErrorMsg}}</div>
@@ -59,6 +60,9 @@
                                               <div class="text-danger">{{passwordErrorMsg}}</div>
                                           </div>
                                       </div>
+                                      <div class="form-group">
+                                      <label><input type="checkbox" name="rember"  style="margin-right: 5px;" (ngModelChange)="remChange($event)" [(ngModel)]="isChecked">Remember me</label>
+</div>
                                       <!-- <div class="form-group row">
                                       <label class="col-md-3 col-form-label" for="file-input">Doctor Photo</label>
                                       <div class="col-md-9">
@@ -68,7 +72,7 @@
                                       <button class="btn btn-success btn-block mr-2 bt-lg" (click)="logintest1()">Login</button>
                                       <p style="font-size: 10px;
                                       text-align: center;
-                                      margin-top: 10px;">Version : 17.12.21</p>
+                                      margin-top: 10px;">Version : 19.04.22.1</p>
                                   </form>
 
                               </div>

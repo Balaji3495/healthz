@@ -44,7 +44,13 @@ export class PetCareAppointmentComponent implements OnInit {
     private datePipe: DatePipe,
     private excelService: ExcelService,
 
-  ) { }
+  ) { 
+    // login_status
+if(this.getFromLocal("login_status") === false)
+{
+  this.router.navigate(['login']);
+}
+  }
 
   ngOnInit(): void {
     this.listpettype();

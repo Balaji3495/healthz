@@ -32,17 +32,22 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { isEllipsisActiveDirective } from './provider/directive/is-ellipsis-active.directive';
+
 
 
 
 @NgModule({
   declarations: [
+    // IsEllipsDirectiveDirective,
     AppComponent,
     AdminComponent,
     HomepageComponent,
     LoginComponent,
     PetServiceAppointmentViewComponent,
     ServiceProviderComponent,
+    isEllipsisActiveDirective,
+  
 
   ],
   imports: [
@@ -57,6 +62,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    
     RadioButtonModule, TableModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDap8qav1flUsql0VWUYkjgB0noN0o_U1Y'
@@ -72,6 +78,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     ButtonModule,
 
   ],
+  // exports: [IsEllipsDirectiveDirective],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
