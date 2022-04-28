@@ -17,14 +17,14 @@
 
                 <div class="row">
                     <div class="col-md-4" style="margin-bottom: 15px;">
-                        <h5 class="form-lable">Vendor:</h5>
+                        <h5 class="form-lable">Agents:</h5>
                         <p-dropdown [options]="vendor_list" [(ngModel)]="Vendor" placeholder="Select Vendor" optionLabel="bussiness_name"
                             [showClear]="true"></p-dropdown>
 
                     </div>
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Category:</h5>
-                        <p-dropdown [options]="Catagories_list" [(ngModel)]="Category" placeholder="Select Category" optionLabel="product_cate" (ngModelChange)="subcate()"
+                        <p-dropdown [options]="Catagories_list" [(ngModel)]="cat_id" placeholder="Select Category" optionLabel="product_cate" (ngModelChange)="subcate()"
                             [showClear]="true"></p-dropdown>
 
                     </div>
@@ -64,7 +64,7 @@
                         <input type="text" pInputText [(ngModel)]="Discount" placeholder="Discount %">
                     </div>
                     <div class="col-md-4">
-                        <h5 class="form-lable">Threshould:</h5>
+                        <h5 class="form-lable">Availability:</h5>
                         <input type="text" pInputText [(ngModel)]="threshould" placeholder="Threshould">
                     </div>
                     <!-- <div class="col-md-4">
@@ -168,12 +168,12 @@
                              </div>
                           </div>
                     </div>
-                    <div class="col-md-7 text-center">
+                    <!-- <div class="col-md-7 text-center">
                         <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
                         <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
                         <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
-                    </div>
-                    <div class="col-md-2 text-right">
+                    </div> -->
+                    <div class="col-md-9 text-right">
                         <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
                     </div>
                 </div>

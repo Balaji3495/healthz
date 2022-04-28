@@ -44,3 +44,20 @@ body .ui-table .ui-table-tbody > tr > td {
 .pendinguser .ui-table-wrapper.ng-star-inserted {
   min-height: 234px !important;
 }
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #dcdcdc;
+  outline: 0;
+  box-shadow: 0 0 0 0 rgb(0 123 255 / 25%);
+}
+
+body .ui-paginator .ui-paginator-first:focus, body .ui-paginator .ui-paginator-prev:focus, body .ui-paginator .ui-paginator-next:focus, body .ui-paginator .ui-paginator-last:focus, 
+body .ui-table .ui-sortable-column:focus, .btn-secondary:focus, .btn-secondary.focus
+{
+
+  box-shadow: 0 0 0 0 #8dcdff !important;
+}
+*:focus {
+  outline: none; box-shadow: 0 0 0 0 #8dcdff !important;
+ }

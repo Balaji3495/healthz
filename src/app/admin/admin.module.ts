@@ -94,6 +94,7 @@ import { ServicebannerComponent } from './pages/master/servicebanner/servicebann
 import { DoctorbannerComponent } from './pages/master/doctorbanner/doctorbanner.component';
 import { DoctorviewComponent } from './doctor/doctorview/doctorview.component';
 import { IsEllipsDirectiveDirective } from '../is-ellips-directive.directive';
+import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 
 
 
@@ -159,7 +160,8 @@ import { IsEllipsDirectiveDirective } from '../is-ellips-directive.directive';
     DoctorlistComponent,
     ServicebannerComponent,
     DoctorbannerComponent,
-    DoctorviewComponent
+    DoctorviewComponent,
+    OrderDetailsComponent
   ],
   imports: [
     CommonModule,

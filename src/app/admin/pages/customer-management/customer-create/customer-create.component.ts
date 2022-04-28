@@ -44,6 +44,7 @@ export class CustomerCreateComponent implements OnInit {
       this.Lname = this.detail.last_name;
       this.Email = this.detail.user_email;
       this.Phone = this.detail.user_phone;
+      const ref_code = "";
     }
   
   }
@@ -87,7 +88,8 @@ export class CustomerCreateComponent implements OnInit {
         "user_type": 1,
         "date_of_reg": new Date(),
         "mobile_type": 'Admin',
-        "user_status" : "complete"
+        "user_status" : "complete",
+        "ref_code": ""
       };
       console.log(a);
       this._api.user_create(a).subscribe(

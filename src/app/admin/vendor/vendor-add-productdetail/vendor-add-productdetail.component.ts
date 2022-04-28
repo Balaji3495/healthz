@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { IDropdownSettings, } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-vendor-add-productdetail',
@@ -47,7 +48,7 @@ export class VendorAddProductdetailComponent implements OnInit {
 
   selectedimgae: any;
   img_path: string = undefined;
-
+  myitem:any[];
   @ViewChild('imgType1', { static:false}) imgType: ElementRef;
   @ViewChild('imgType2', { static:false}) imgType2: ElementRef;
 
@@ -60,7 +61,7 @@ constructor(
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
     private http: HttpClient,
-    private datePipe: DatePipe,
+    private datePipe: DatePipe,private fb: FormBuilder,
     ){
 // login_status
 if(this.getFromLocal("login_status") === false)
@@ -68,7 +69,12 @@ if(this.getFromLocal("login_status") === false)
   this.router.navigate(['login']);
 }
     }
-
+//multiselect dropdown
+// dropdownList = [];
+selectedItems=[];
+dropdownSettings:IDropdownSettings={};
+dropDownForm:FormGroup;
+ 
 
 
   ngOnInit(): void {
@@ -76,6 +82,29 @@ if(this.getFromLocal("login_status") === false)
     this.catagorieslist();
     this.addition_detail = [];
 
+    //multiselect dropdown
+    // this.dropdownList = [
+    //   { item_id: 1, item_text: 'Item1' },
+    //   { item_id: 2, item_text: 'Item2' },
+    //   { item_id: 3, item_text: 'Item3' },
+    //   { item_id: 4, item_text: 'Item4' },
+    //   { item_id: 5, item_text: 'Item5' }
+    // ];
+    this.dropdownSettings = {
+      idField: '_id',
+      textField: 'bussiness_name',
+      enableCheckAll: true,
+      selectAllText: "Select All Agents",
+      unSelectAllText: "UnSelect All Agents",
+  };
+    // this.selectedItems = [
+    //   { item_id: 3, item_text: 'Item3'  },
+    //   { item_id: 4,item_text: 'Item4' }
+    // ];
+    this.dropDownForm = this.fb.group({
+      myItems: [this.selectedItems]
+  });
+  
   }
  saveInLocal(key, val): void {
     this.storage.set(key, val);
@@ -168,7 +197,8 @@ if(this.getFromLocal("login_status") === false)
       "product_name": this.product_name,
       "threshould":""+this.threshould,
       "thumbnail_image": this.thumbnail_image,
-      "vendor_id": this.vendor_id._id
+      // "vendor_id": this.vendor_id._id
+      "vendor_id":this.myitem
     }
     console.log(a);
 
@@ -283,6 +313,26 @@ if(this.getFromLocal("login_status") === false)
       this.addition_detail.splice(index, 1);
     }
 
- 
+ //multi select ddl
+ onItemSelect(item: any) {
+  console.log('onItemSelect', item);
+  this.myitem=item;
+  //console.log(this.myitem);
+}
+onItemDeSelect(item: any) {
+  console.log('onItemDeSelect', item);
+  this.myitem=item;
+ // console.log(this.myitem);
+}
+onSelectAll(items: any) {
+  console.log('onSelectAll', items);
+  // var ddl =this.dropDownForm.controls.myItems.value;
+  // console.log("test",ddl);
+  this.myitem=items;
+ // console.log(this.myitem);
+}
+onUnSelectAll() {
+  console.log('onUnSelectAll fires');
+}
 
 }

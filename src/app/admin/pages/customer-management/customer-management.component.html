@@ -30,14 +30,16 @@
                          </div>
                       </div>
                 </div>
-                <div class="col-md-6 text-center">
+                <!-- <div class="col-md-6 text-center">
                     <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class=""></p-calendar>
                     <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-1"></p-calendar>
-                    <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
-                </div>
-                <div class="col-md-3 text-right">
-                    <button type="button" class="btn btn-secondary mr-2" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
-                    <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
+                    
+                </div> -->
+                <div class="col-md-9 text-right">
+                    <!-- <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button> -->
+                    <!-- <button type="button" class="btn btn-secondary mr-2" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button> -->
+                    <button type="button" class="btn btn-secondary mr-2" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
+                    <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="EXCEL" (click)="exportAsXLSX()" style="margin-right: 0.5em; margin-bottom: 10px;"></button>
                 </div>
 
 
@@ -51,7 +53,7 @@
 <div class="doc-table table-responsive" #TABLE>
 
         <div class="ui-helper-clearfix" style="text-align: left">
-            <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="EXCEL" (click)="exportAsXLSX()" style="margin-right: 0.5em; margin-bottom: 10px;"></button>
+           
             <!--  <button type="button" pButton icon="fas fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>          -->
         </div>
 
@@ -79,18 +81,8 @@
             <th  style="width: 200px;">
                 Phone
             </th>
-            <th  style="width: 200px;">
-              User type
-            </th>
-            <th>
-              Profile Status
-            </th>
-            <th>
-              Delete Status
-            </th>
-            <th>
-              email Status
-            </th>
+           
+           
 
 
 
@@ -112,25 +104,10 @@
             <td class="truncate-cell">{{item.user_email}}</td>
             <td>{{item.user_phone}}</td>
 
-            <td>
-                <p *ngIf="item.user_type == 1">Patient</p>
-                <p *ngIf="item.user_type == 4">Doctor</p>
-                <p *ngIf="item.user_type == 2">Service Provider</p>
-                <p *ngIf="item.user_type == 3">Vendor</p>
-                <!-- {{item.mobile_type}} -->
-              </td>
+         
 
 
-            <td>
-                {{item.user_status}}
-            </td>
-            <td>
-                {{item.delete_status}}
-            </td>
-
-            <td>
-              {{item.user_email_verification}}
-            </td>
+          
             <td>
                 {{item.createdAt | date}}
               </td>

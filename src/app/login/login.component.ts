@@ -143,7 +143,7 @@ rember: boolean
     this.validator();
     if (this.validation) {
       console.log(this.rember);
-      if ((this.email_id == 'healthz@gmail.com') && (this.passwords == '12345') ) {
+      if ((this.email_id == 'freshfish@gmail.com') && (this.passwords == '12345') ) {
        //&& (this.checkbox == true)
    
       console.log("rem",this.isChecked)

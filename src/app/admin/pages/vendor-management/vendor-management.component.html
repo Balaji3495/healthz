@@ -1,13 +1,49 @@
-<h4 class="title">Vendor Management</h4>
+<section>
+    <div class="page-header">
+        <div>
+            <h2 class="main-content-title tx-24 mb-1">Agents</h2>
+            <!-- <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Customers</li>
+            </ol> -->
+        </div>
+
+    </div>
+
+    <div class="row row-sm">
+
+        <div class="col-lg-12">
+    <div class="card custom-card">
+        <div class="card-body">
+            <div class="card-item">
+
 
 <div class="row">
     <div class="col-md-3">
         <div class="search-hero">
-            <input class="form-control" type="text" name="search2" style="margin-top: 25px;font-family: FontAwesome;"
-                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
-        </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                </div>
+              
+                 
+            <input class="form-control" type="text" name="search2" 
+                [(ngModel)]="searchQR" autocomplete="off" placeholder=" Search...">
+        </div></div>
     </div>
-    <div class="col-md-3">
+    <!-- <div class="col-md-6 text-center">
+        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class=""></p-calendar>
+        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-1"></p-calendar>
+       
+    </div> -->
+    <div class="col-md-9 text-right">
+        <!-- <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button> -->
+        <!-- <button type="button" class="btn btn-secondary mr-2" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button> -->
+        <button type="button" class="btn btn-secondary mr-0" (click)="addnewVendor()"><i class="fas fa-plus-circle"></i> Add</button>
+    </div>
+
+
+    <!-- <div class="col-md-3">
         <h5 class="form-lable">Start Date</h5>
         <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon"></p-calendar>
     </div>
@@ -20,7 +56,7 @@
             (click)="filter_date()">Search</button>
         <button type="button" class="btn btn-primary mr-2" style="margin-top: 24px;" (click)="refersh()">Refresh</button>
         <button type="button" class="btn btn-primary mr-2" style="margin-top: 24px;" (click)="addnewVendor()">ADD</button>
-    </div>
+    </div> -->
 </div>
 
 <div class="ven-table">
@@ -118,4 +154,7 @@
             </ng-template>
         </p-table>
     </div>
+</div></div>
+</div>
+</div>
 </div>

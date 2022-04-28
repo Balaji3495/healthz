@@ -8,6 +8,8 @@ import { ServiceProviderManagementComponent } from './pages/service-provider-man
 import { CategoryManagementComponent } from './pages/master/category-management/category-management.component';
 import { SubCategoryManagementComponent } from './pages/sub-category-management/sub-category-management.component';
 import { ProductManagementComponent } from './pages/product-management/product-management.component';
+import { OrderDetailsComponent} from './pages/order-details/order-details.component';
+
 
 import { VendorFormComponent } from './pages/vendor-management/vendor-form/vendor-form.component';
 import { ServiceProviderFormComponent } from './pages/service-provider-management/service-provider-form/service-provider-form.component';
@@ -76,11 +78,12 @@ const routes: Routes = [
   { path: 'healthissue', component: HealthissueComponent },
   { path: 'Service_Type', component: ServiceTypeComponent },
   { path: 'Customer_Management', component: CustomerManagementComponent },
-  { path: 'Vendor_Management', component: VendorManagementComponent },
+  { path: 'Agents', component: VendorManagementComponent },
   { path: 'Service_Provider_Management', component: ServiceProviderManagementComponent },
   { path: 'Category_Management', component: CategoryManagementComponent },
   { path: 'Sub_Category_Management', component: SubCategoryManagementComponent },
   { path: 'Product_Management', component: ProductManagementComponent },
+  { path: 'Order_Details', component: OrderDetailsComponent },
 
   { path: 'Vendor_form', component: VendorFormComponent },
   { path: 'Service_Provider_form', component: ServiceProviderFormComponent },

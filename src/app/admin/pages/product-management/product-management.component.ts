@@ -59,6 +59,7 @@ export class ProductManagementComponent implements OnInit {
   today_deal: boolean;
   productForm: FormGroup;
   thumbnail_image : any;
+  product_detail : any;  cat_id : any;
   constructor(
     private formBuilder:FormBuilder,
     private toastr:ToastrManager,
@@ -130,6 +131,17 @@ if(this.getFromLocal("login_status") === false)
       }
     );
   }
+  // catagorieslist() {
+  //   this._api.product_cate_list().subscribe(
+  //     (response: any) => {
+  //       console.log(response.Data);
+  //       this.rows = response.Data;
+  //       this.Catagories_list = response.Data;
+  //       console.log(this.Catagories_list);
+  //       this.cat_id = this.product_detail.cat_id ;
+  //     }
+  //   );
+  // }
   catagorieslist() {
     this._api.product_cate_list().subscribe(
       (response: any) => {
@@ -137,6 +149,7 @@ if(this.getFromLocal("login_status") === false)
         this.rows = response.Data;
         this.Catagories_list = response.Data;
         console.log(this.Catagories_list);
+        this.cat_id = this.product_detail.cat_id ;
       }
     );
   }
@@ -462,8 +475,8 @@ if(this.getFromLocal("login_status") === false)
       );
     }
     else {
-      this.showWarning("Please select the startdate and enddate");
-      //alert('Please select the startdate and enddate');
+      this.showWarning("Please select the Start Date and End Date");
+      //alert('Please select the Start Date and End Date');
     }
 
   }

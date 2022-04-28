@@ -23,7 +23,7 @@ export class ApiService {
   DoctorRegister(data) {
     return this.http.post(this.apiUrl + 'userdetails/create', data);
   }
-  /////HealthZ Admin API Start///////
+  /////fresh fish Admin API Start///////
 
   ////User type API//////
   user_type_list() {
@@ -900,7 +900,7 @@ export class ApiService {
 
 
   vendor_details_list1() {
-    return this.http.get(this.apiUrl + 'product_vendor/getlist_list');
+    return this.http.get(this.apiUrl + 'product_vendor/getlist');
   }
 
   service_provider_list1() {

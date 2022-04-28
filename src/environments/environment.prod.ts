@@ -3,8 +3,8 @@ export const environment = {
 
   //Dev URL///
 
-  apiUrl: 'http://35.165.75.97:3000/api/',
-  imageURL: 'http://35.164.43.170:3000/api/'
+  apiUrl: 'http://35.161.159.100:3000/api/',
+  imageURL: 'http://35.161.159.100:3000/api/'
 
 
 

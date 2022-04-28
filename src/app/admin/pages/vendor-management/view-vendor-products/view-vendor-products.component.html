@@ -24,7 +24,7 @@
 
                     </div>
 
-                    <div class="col-md-4" style="margin-bottom: 15px;">
+                    <!-- <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Pet Type:</h5>
                             <p-multiSelect [options]="pet_type_list" [(ngModel)]="pettype" defaultLabel="Select"
                             optionLabel="pet_type_title"></p-multiSelect>
@@ -41,7 +41,7 @@
                         <p-multiSelect [options]="Ages" [(ngModel)]="Age" defaultLabel="Select"
                             optionLabel="y"></p-multiSelect>
 
-                    </div>
+                    </div> -->
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Product Name:</h5>
                         <input type="text" pInputText [(ngModel)]="Product_Name" placeholder="Enter Product Name" maxlength = "25">
@@ -59,8 +59,8 @@
                         <input type="text" pInputText [(ngModel)]="Discount" placeholder="Discount %">
                     </div>
                     <div class="col-md-4">
-                        <h5 class="form-lable">Threshould:</h5>
-                        <input type="text" pInputText [(ngModel)]="threshould" placeholder="Threshould">
+                        <h5 class="form-lable">Availability :</h5>
+                        <input type="text" pInputText [(ngModel)]="threshould" placeholder="Availability ">
                     </div>
                     <!-- <div class="col-md-4">
                         <h5 class="form-lable">Count:</h5>
@@ -157,12 +157,12 @@
                              </div>
                           </div>
                     </div>
-                    <div class="col-md-7 text-center">
+                    <!-- <div class="col-md-7 text-center">
                         <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
                         <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
                         <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
-                    </div>
-                    <div class="col-md-2 text-right">
+                    </div> -->
+                    <div class="col-md-9 text-right">
                         <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
                     </div>
                 </div>

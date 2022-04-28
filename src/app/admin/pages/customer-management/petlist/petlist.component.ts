@@ -113,8 +113,8 @@ service_form() {
       );
     }
     else{
-      // alert('Please select the startdate and enddate');
-      this.showWarning("Please select the startdate and enddate");
+      // alert('Please select the Start Date and End Date');
+      this.showWarning("Please select the Start Date and End Date");
     }
    
   }

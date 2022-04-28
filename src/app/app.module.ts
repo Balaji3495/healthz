@@ -33,7 +33,7 @@ import { ButtonModule } from 'primeng/button';
 
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { isEllipsisActiveDirective } from './provider/directive/is-ellipsis-active.directive';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 
@@ -62,6 +62,7 @@ import { isEllipsisActiveDirective } from './provider/directive/is-ellipsis-acti
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    NgMultiSelectDropDownModule.forRoot(),
     
     RadioButtonModule, TableModule,
     AgmCoreModule.forRoot({

@@ -17,9 +17,9 @@
 
                 <div class="row">
                     <div class="col-md-4" style="margin-bottom: 15px;">
-                        <h5 class="form-lable">Vendor :</h5>
-                        <p-dropdown [options]="vendor_list" [(ngModel)]="vendor_id" name="vendor_id" placeholder="Select Vendor" optionLabel="bussiness_name"
-                            [showClear]="true"></p-dropdown>
+                        <h5 class="form-lable">Agents :</h5>
+                        <p-dropdown [options]="vendor_list" [(ngModel)]="vendor_id" name="vendor_id" placeholder="Select Agents" optionLabel="bussiness_name"
+                            [showClear]="true" optionLabel="bussiness_name"></p-dropdown>
 
                     </div>
                     <div class="col-md-4" style="margin-bottom: 15px;">
@@ -42,8 +42,8 @@
                     </div>
 
                     <div class="col-md-4">
-                        <h5 class="form-lable">Threshould :</h5>
-                        <input type="number" pInputText [(ngModel)]="threshould" placeholder="Threshould">
+                        <h5 class="form-lable">Availability :</h5>
+                        <input type="number" pInputText [(ngModel)]="threshould" placeholder="Availability">
                     </div>
 
                     <div class="col-md-4">

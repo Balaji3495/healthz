@@ -1,0 +1,13 @@
+http://35.161.159.100:447/
+
+upload files path : /usr/share/nginx/admin
+
+website:
+
+host   :http://ec2-35-161-159-100.us-west-2.compute.amazonaws.com:447/
+
+host:ec2-35-161-159-100.us-west-2.compute.amazonaws.com
+
+username:ec2-user
+
+port:22

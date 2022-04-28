@@ -202,7 +202,7 @@ export class SubCategoryManagementComponent implements OnInit {
       );
     }
     else {
-      alert('Please select the startdate and enddate');
+      alert('Please select the Start Date and End Date');
     }
 
   }

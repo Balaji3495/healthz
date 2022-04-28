@@ -35,8 +35,8 @@ export class VendorFormComponent implements OnInit {
     this.Longitude = this.location_lng;
     this.address = address.formatted_address;
     this.addVendorForm.patchValue({
-      business_lat:this.location_lat,
-      business_long:this.location_lng
+      bussiness_lat:this.location_lat,
+      bussiness_long:this.location_lng
     });
     console.log(this.address);
   }
@@ -52,24 +52,27 @@ export class VendorFormComponent implements OnInit {
   uploadedFiles: any[] = [];
   constructor(private router: Router, private _api:ApiService, private formBuilder:FormBuilder, private toastr:ToastrManager) {
     this.addVendorForm = this.formBuilder.group({
-      _id:['',Validators.required],
+
+
+
+      // _id:[''],
       business_reg:['',Validators.required],
-      business:['',Validators.required],
-      business_email:['',Validators.required],
-      business_gallery:[''],
-      business_lat:['',Validators.required],
-      business_loc:['',Validators.required],
-      business_long:['',Validators.required],
-      business_name:['',Validators.required],
-      business_phone:['',Validators.required],
+      bussiness:['',Validators.required],
+      bussiness_email:['',Validators.required],
+      bussiness_gallery:[''],
+      bussiness_lat:[''],
+      bussiness_loc:[''],
+      bussiness_long:[''],
+      bussiness_name:['',Validators.required],
+      bussiness_phone:['',Validators.required],
       certifi:[''],
       date_and_time:[''],
-      delete_status:[''],
-      gov_id_proof:[''],
-      mobile_type:[''],
+      // delete_status:[''],
+      govt_id_proof:[''],
+      mobile_type:['Admin'],
       photo_id_proof:[''],
-      profile_status:[''],
-      profile_verification_status:[''],
+      profile_status:[true],
+      profile_verification_status:['Verified'],
       user_email:[''],
       user_id:[''],
       user_name:['']
@@ -81,7 +84,10 @@ export class VendorFormComponent implements OnInit {
       user_email:['',Validators.required],
       user_email_verification:['',Validators.required],
       user_phone:['',Validators.required],
-      user_type:['',Validators.required]
+      user_type:['',Validators.required],
+      user_status:[''],
+      ref_code:['']
+      
     });
    }
 
@@ -107,8 +113,8 @@ export class VendorFormComponent implements OnInit {
     this.Latitude = this.location_lat;
     this.Longitude = this.location_lng;
     this.addVendorForm.patchValue({
-      business_lat:this.location_lat,
-      business_long:this.location_lng
+       bussiness_lat:this.location_lat,
+      bussiness_long:this.location_lng
     });
     this._api.location_details(this.location_lat,this.location_lng).subscribe(async data=>{
       this.address = await data['results'][0]['formatted_address'];
@@ -119,11 +125,14 @@ export class VendorFormComponent implements OnInit {
     this.userForm.patchValue({
       user_email_verification: false,
       user_type:3,
-      mobile_type:"admin"
+      mobile_type:"admin",
+      user_status: "complete",
+        ref_code: ""
     });
     
     if (this.userForm.valid) {
       this._api.user_create(this.userForm.value).subscribe(data=>{
+        console.log("sss",data)
         if (data['Code']==200) {
           this.addmore = true;
           this.addVendorForm.patchValue({
@@ -143,15 +152,20 @@ export class VendorFormComponent implements OnInit {
   }
 
   addVendor(){
+    console.log("sample",this.addVendorForm.value);
     if (this.addVendorForm.valid) {
+
       this._api.create_Vendor(this.addVendorForm.value).subscribe(data=>{
+        console.log("test",data)
         if (data['Code']==200) {
           this.showSuccess(data['Message']);
+          this.router.navigateByUrl('/admin/Agents');
         } else {
           this.showError(data['Message']);
         }
       });
     } else {
+    
       this.showError("Please all fields");
     }
   }

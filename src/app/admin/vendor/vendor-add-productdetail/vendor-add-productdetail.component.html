@@ -17,10 +17,19 @@
 
                 <div class="row">
                     <div class="col-md-4" style="margin-bottom: 15px;">
-                        <h5 class="form-lable">Vendor :</h5>
-                        <p-dropdown [options]="vendor_list" [(ngModel)]="vendor_id" placeholder="Select Vendor" optionLabel="bussiness_name"
-                            [showClear]="true"></p-dropdown>
-
+                        <h5 class="form-lable">Agents :</h5>
+                        <!-- <p-dropdown [options]="vendor_list" [(ngModel)]="vendor_id" placeholder="Select Agents" optionLabel="bussiness_name"
+                            [showClear]="true"></p-dropdown> -->
+                            <ng-multiselect-dropdown
+                            [placeholder]="'Select Agents'"
+                            [settings]="dropdownSettings"
+                            [data]="vendor_list"
+                            formControlName="myItems"
+                            (onSelect)="onItemSelect($event)"
+                            (onSelectAll)="onSelectAll($event)"
+                            (onDeSelect)="onItemDeSelect($event)"
+                            (onDeSelectAll)="onUnSelectAll()">
+                        </ng-multiselect-dropdown>
                     </div>
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Category :</h5>
@@ -29,24 +38,26 @@
                     </div>
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Product Name :</h5>
-                        <input type="text" pInputText [(ngModel)]="product_name" placeholder="Enter Product Name" maxlength = "25">
+                        <!-- <input type="text" pInputText [(ngModel)]="product_name" placeholder="Enter Product Name" maxlength = "25"> -->
+                        <p-dropdown [options]="Catagories_list" [(ngModel)]="cat_id" placeholder="Select Product Name" optionLabel="product_cate"
+                        [showClear]="true"></p-dropdown>
                     </div>
                     <div class="col-md-12">
                         <h5 class="form-lable">Description :</h5>
                         <textarea pInputTextarea [(ngModel)]="product_discription" rows="5" cols="50"></textarea>
                     </div>
                     <hr>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <h5 class="form-lable">Cost :</h5>
                         <input type="number" pInputText [(ngModel)]="cost" placeholder="Cost">
                     </div>
 
-                    <div class="col-md-4">
-                        <h5 class="form-lable">Threshould :</h5>
-                        <input type="number" pInputText [(ngModel)]="threshould" placeholder="Threshould">
-                    </div>
+                    <!-- <div class="col-md-4">
+                        <h5 class="form-lable">Availability :</h5>
+                        <input type="number" pInputText [(ngModel)]="threshould" placeholder="Availability">
+                    </div> -->
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <h5 class="form-lable">Price type :</h5>
                         <input type="text" pInputText [(ngModel)]="price_type" placeholder="Price type">
                     </div>

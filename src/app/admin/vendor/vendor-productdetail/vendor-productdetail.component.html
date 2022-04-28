@@ -17,30 +17,40 @@
         <div class="card-body">
             <div class="card-item">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="search-hero">
                             <div class="input-group mb-3">
                                <div class="input-group-prepend">
                                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                                </div>
                                <input class="form-control" type="text" name="search2"
-                           [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
-                             </div>
+                           [(ngModel)]="searchQR" autocomplete="off" placeholder="Search..."> 
+                          </div>
+                         
+                          
                           </div>
                     </div>
-                    <div class="col-md-7 text-center">
-                        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
-                        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
-                        <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
-                    </div>
-                    <div class="col-md-1 text-right">
+                    <div class="col-md-5 text-center">
+                       <!--  <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-1"></p-calendar>
+                        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-1"></p-calendar>
+ -->
+                        <p-dropdown   [options]="vendor_list" [(ngModel)]="vendor_id" placeholder="Select Agents" class="mr-1" optionLabel="bussiness_name"></p-dropdown>
+
+                   
+                        <p-dropdown [options]="Catagories_list" optionLabel="product_cate" [(ngModel)]="cat_id" placeholder="Select Category" class="mr-1"></p-dropdown>
+
+
+                  
+                    </div> 
+                    <div class="col-md-4 text-right">
+                        <button type="button" class="btn btn-primary" ><i class="fas fa-search"></i> Search</button>
                         <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
-                    </div>
-                    <div class="col-md-1 text-right">
-                        <button type="button" class="btn btn-primary" (click)="addproduct_details()"><i class="fas fa-plus"></i> Add Product</button>
+                    <!-- </div>
+                    <div class="col-md-1 text-right"> -->
+                        <button type="button" class="btn btn-primary" (click)="addproduct_details()" style="    margin-right: 10px;width: 96px;"><i class="fas fa-plus"></i> Add Product</button>
                     </div>
                 </div>
-
+                
                 <!-- search -->
     <div class="doc-table table-responsive">
     <p-table [value]="list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
@@ -68,7 +78,7 @@
                 S.No
             </th>
             <th pSortableColumn="code">
-                thumbnail image 
+                Thumbnail Image 
             </th>
             <th pSortableColumn="code">
                 Product Image 
@@ -77,13 +87,14 @@
                 Product Name 
             </th>
             <th pSortableColumn="code">
-                Category 
+                Availability 
             </th>
-            <th>Today's Deal</th>
-            <th>shop Name</th>
+            <th>Recommended</th>
+            <!-- <th>shop Name</th>
             <th>User Name</th>
-            <th>Phone Number</th>
+            <th>Phone Number</th> -->
             <th>Created at</th>
+            <th>Sold Out</th>
             <th style="width: 163px;text-align:center">
                 Action
             </th>
@@ -96,25 +107,36 @@
                 <div class="imgthumcontainer"><img src="{{item.thumbnail_image}}"></div>
             </td>
             <td>
-             <div class="imgthumcontainer"><img src="{{item.product_img[0].product_img}}"></div>
+             <div class="imgthumcontainer"><img src="{{item.product_img}}"></div>
             </td>
             <td>{{item.product_name}}</td>
-            <td>{{item.cat_id.product_cate}}</td>
+            <td>{{item.threshould}}</td>
             <td>
                 <button class="btn btn-sm btn-success makeDealbtn" *ngIf="item.today_deal === false" (click)="makeTDeal(item._id, true)">Make Today's Deal</button>
                 <button class="btn btn-sm btn-danger makeDealbtn" *ngIf="item.today_deal === true" (click)="makeTDeal(item._id, false)">Cancel Today's Deal</button>
             </td>
-            <td>{{item.user_id.bussiness_name}}</td>
+            <!-- <td>{{item.user_id.bussiness_name}}</td>
             <td>{{item.user_id.bussiness_phone}}</td>
-            <td>{{item.user_id.user_name}}</td>
+            <td>{{item.user_id.user_name}}</td> -->
             <td>
                 {{item.createdAt | date}}
+            </td>
+            <td>
+
+                <button class="btn btn-sm btn-success makeDealbtn" >Mark as Sold</button>
             </td>
             <td class="act">
                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"
                 (click)="editproduct_details(item)"></i>
             <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
                 (click)="delete(item._id)"></i>
+                
+                  
+                  <label class="switch" pTooltip="Status">
+                    <input type="checkbox" >
+                    <span class="slider round"></span>
+                  </label>
+                 
              </td>
         </tr>
     </ng-template>

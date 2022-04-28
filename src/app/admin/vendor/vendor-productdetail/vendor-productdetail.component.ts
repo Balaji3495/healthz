@@ -22,7 +22,13 @@ export class VendorProductdetailComponent implements OnInit {
   S_Date: any;
   E_Date: any;
   list: any;
-
+  Catagories_list: any;
+  rows: any;
+  cat_id: any;
+  product_detail: any;
+  vendor_list: any[];
+  vendor_id: { _id: any; bussiness_name: any; bussiness: any; };
+statuschecked:boolean=false;
 
 constructor(
     private formBuilder:FormBuilder,
@@ -38,7 +44,8 @@ constructor(
 
 
   ngOnInit(): void {
-
+this.vendorlist();
+    this.catagorieslist();
     this._api.product_details_list().subscribe(
       (response: any) => {
         console.log(response.Data);
@@ -67,8 +74,8 @@ constructor(
       );
     }
     else {
-      this.showWarning("Please select the startdate and enddate");
-      //alert('Please select the startdate and enddate');
+      this.showWarning("Please select the Start Date and End Date");
+      //alert('Please select the Start Date and End Date');
     }
 
   }
@@ -143,6 +150,43 @@ constructor(
 
   getFromLocal(key): any {
     return this.storage.get(key);
+  }
+  catagorieslist() {
+    this._api.product_cate_list().subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.rows = response.Data;
+        this.Catagories_list = response.Data;
+        console.log(this.Catagories_list);
+        this.cat_id = this.product_detail.cat_id ;
+      }
+    );
+  }
+  
+  vendorlist() {
+    this._api.vendor_details_list().subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.rows = response.Data;
+        this.vendor_list = [];
+        this.rows.forEach(element => {
+          let a = {
+            _id: element._id,
+            bussiness_name:  element.bussiness_name,
+            bussiness:  element.bussiness,
+          }
+          this.vendor_list.push(a)
+        });
+        console.log(this.vendor_list);
+        console.log(this.product_detail.user_id);
+        let a = {
+          _id: this.product_detail.user_id._id,
+          bussiness_name: this.product_detail.user_id.bussiness_name,
+          bussiness: this.product_detail.user_id.bussiness,
+        }
+        this.vendor_id = a;
+      }
+    );
   }
 
 }

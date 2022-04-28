@@ -217,8 +217,8 @@ export class SpSpecializationComponent implements OnInit {
       );
     }
     else{
-      this.showWarning("Please select the startdate and enddate");
-      //alert('Please select the startdate and enddate');
+      this.showWarning("Please select the Start Date and End Date");
+      //alert('Please select the Start Date and End Date');
     }
 
   }
